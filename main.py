@@ -17,6 +17,12 @@ id_ovs=sort_by_leadtime()
 
 print_capacidade_reservada()
 
+print_capacidades()
+
+for index in range(len(ofs)):
+
+    partir_of(index)
+
 for index in range(len(id_ovs)):
 
     id_ov=id_ovs[index]

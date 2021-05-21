@@ -4,8 +4,8 @@ class of(object):
 
         self.id=id
         self.cod_of=cod_of
-        self.duracao=duracao
-        self.quantidade=quantidade
+        self.duracao=float(duracao)
+        self.quantidade=float(quantidade)
         self.id_ct=id_ct
         self.codigo_material=codigo_material
         self.descricao_material=descricao_material
@@ -13,9 +13,9 @@ class of(object):
         self.id_items=id_items
         self.precedencias=[]
         self.sequencias=[]
-        self.id_alocada=[]
-        self.blocos=blocos
-        self.viradas=viradas
+        self.id_alocada=-1
+        self.blocos=float(blocos)
+        self.viradas=float(viradas)
 
     def __repr__(self):
         return str(self.cod_of)

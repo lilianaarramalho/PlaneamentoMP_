@@ -74,7 +74,6 @@ def importar_cts():
 
     semana_inicio_plano=-1
 
-
     cts=[]
 
     df_cts=pd.read_csv('data/02. cts.csv',sep=",",encoding="UTF-8")
@@ -98,8 +97,8 @@ def importar_cts():
         dias_semana = dias_semana[posicoes_a_remover+1:]
         semana_inicio_plano=current_week+1
     else:
-        dias_semana = dias_semana[posicoes_a_remover + 1:]
-        n_dias_passados=current_day+1
+        dias_semana = dias_semana[posicoes_a_remover:]
+        n_dias_passados=current_day
         semana_inicio_plano = current_week
         if n_dias_passados >=dias_semana[0]:
             dias_semana=dias_semana[1:]
@@ -107,6 +106,9 @@ def importar_cts():
             dias_semana[0]=dias_semana[0]-n_dias_passados
 
     capacidade_dia=df_cts['capacidade_dia'].tolist()
+    turnos_dia=df_cts['turnos/dia'].tolist()
+    horas_turno=df_cts['horas/turno'].tolist()
+    oee=df_cts['OEE'].tolist()
 
     ct_blocos=df_blocos['ct'].tolist()
     capacidade_blocos=df_blocos['blocos semana'].tolist()
@@ -122,6 +124,9 @@ def importar_cts():
 
         for id_ct in range(len(nome_ct)):
 
+            if id_ct==36:
+                print('debug')
+
             capacidade_bl=9999999999
             capacidade_vir=9999999999
 
@@ -136,11 +141,19 @@ def importar_cts():
                 posicao_virados = ct_virados.index(nome_ct[id_ct])
                 capacidade_vir = capacidade_virados[posicao_virados]
 
+
             for index in range(len(dias_semana)):
-                new_ct.capacidade.append(int(dias_semana[index])*int(capacidade_dia[id_ct]))
+
+                if index+semana_inicio_plano>26 and nome_ct[id_ct]=='CRMLAMPL' and acabamento[id_ct]=='Qualquer':
+                    capacidade=int(dias_semana[index])*(int(turnos_dia[id_ct])+3)*horas_turno[id_ct]*oee[id_ct]*60
+
+                else:
+                    capacidade=int(dias_semana[index])*int(capacidade_dia[id_ct])
+
+                new_ct.capacidade.append(capacidade)
                 new_ct.capacidade_virados.append(capacidade_vir)
                 new_ct.capacidade_blocos.append(capacidade_bl)
-                new_ct.capacidade_iniciais.append(dias_semana[index]*capacidade_dia[id_ct])
+                new_ct.capacidade_iniciais.append(capacidade)
 
             for posicao in range(len(clientes)):
                 capacidade_cliente_atual = [i * 99999999 for i in new_ct.capacidade_iniciais]
@@ -173,6 +186,20 @@ def importar_cts():
 
 cts=importar_cts()
 
+def print_capacidades():
+
+    rows=[]
+    global semana_inicio_plano
+
+    for index in range(len(cts)):
+        for semana in range(len(cts[index].capacidade_iniciais)):
+            new_row={'Centro de Trabalho':cts[index].nome,'Acabamento':cts[index].acabamento, 'semana': semana + semana_inicio_plano, 'capacidade':cts[index].capacidade_iniciais[semana] }
+            rows.append(new_row)
+
+    df=pd.DataFrame(rows)
+    df.to_csv('data/12. capacidade inicial.csv')
+
+
 def import_ofs(method):
 
     ofs=[]
@@ -188,6 +215,9 @@ def import_ofs(method):
     df_ofs['Duração da operação'] = df_ofs['Duração da operação'].str.replace(' ', '')
     df_ofs['Duração da operação'] = df_ofs['Duração da operação'].astype(float)
 
+    df_ofs['Quantidade total da ordem']=df_ofs['Quantidade total da ordem'].str.replace(' ','')
+    df_ofs['Quantidade total da ordem']=df_ofs['Quantidade total da ordem'].astype(float)
+
     if method == 0:  # por planear
         df_ofs=df_ofs[(df_ofs['Ordem de produção / planeada']<400000000) & (df_ofs['Ordem de produção / planeada']>300000000)]
     elif method==1: # só não planeadas
@@ -197,11 +227,12 @@ def import_ofs(method):
     df_ofs['acabamento']=df_ofs['Texto breve de material'].str.split('/').str[1]
     df_ofs['acabamento'] = df_ofs['acabamento'].str.split(' ').str[0]
     df_ofs['descricao_bloco']=df_ofs['Descritivo componente'].str.split(' ').str[0]
+    df_ofs['encomendar']=df_ofs['Descritivo componente'].str.split(' ').str[-1]
     df_ofs = df_ofs.sort_values(['Ordem Venda / Transferência', 'Item OV/Transferência', 'Sold to'], ascending=[False, False, False])
 
     df_ofs['Data-base do fim'] = pd.to_datetime(df_ofs['Data-base do fim'], format='%d/%m/%Y')
 
-    df_ofs['Data-base do início']=df_ofs['Data-base do início'].fillna(datetime.datetime.now())
+    df_ofs['Data-base do fim']=df_ofs['Data-base do fim'].fillna(datetime.datetime.now())
 
     df_ofs['Data de criação da ov'] = pd.to_datetime(df_ofs['Data de criação da ov'],format='%d/%m/%Y')
 
@@ -221,6 +252,15 @@ def import_ofs(method):
 
     df_ofs['ov'] = lista_ovs
     df_ofs['item']=lista_items
+
+    #remover todas as ovs que têm pelo menos um material NE
+
+    df_to_remove=df_ofs.copy()
+    df_to_remove=df_to_remove[df_to_remove['encomendar']!='NE']
+    df_to_remove=df_to_remove[['ov']]
+    df_to_remove=df_to_remove.drop_duplicates()
+    m = df_ofs['ov'].isin(df_to_remove['ov'])
+    df_ofs=df_ofs[~m]
 
     df_ofs=df_ofs.sort_values(['ov', 'item','Material de produção'], ascending=[False, False,False])
 
@@ -273,8 +313,7 @@ def import_ofs(method):
 
             semana=data_desejada[index]
             cod_ov=ovs_ov[index]
-            if cod_ov==3826000005:
-                print('x')
+
             cliente=id_cliente[index]
             cliente_interno=id_cliente_interno[index]
             semana_criacao=semanas_criacao[index]
@@ -294,6 +333,9 @@ def import_ofs(method):
                         id_interno_ov = id_lista
                         break
 
+            if cod_ov==3820011551:
+                print('x')
+
             new_ov=ov(index,cod_ov,id_cliente_ov,id_interno_ov,semana,semana_criacao)
             ovs.append(new_ov)
             pbar.update(1)
@@ -311,7 +353,6 @@ def import_ofs(method):
     for index in range(len(ovs_item)):
 
         cod_item=items_item[index]
-
         for pos_ov in range(len(ovs)):
             if ovs_item[index]==ovs[pos_ov].cod_ov and semana_item[index]==ovs[pos_ov].data_desejada:
                 id_ov=pos_ov
@@ -328,7 +369,7 @@ def import_ofs(method):
     codigos_precedencia = df_ofs['Componente'].tolist()
     blocos = df_ofs['Qtd.necessária'].tolist()
     descricao_bloco = df_ofs['descricao_bloco'].tolist()
-    data_alocada = df_ofs['Data-base do início'].tolist()
+    data_alocada = df_ofs['Data-base do fim'].tolist()
     data_desejada = df_ofs['semana'].tolist()
     lista_items=df_ofs['item'].tolist()
     lista_ovs=df_ofs['ov'].tolist()
@@ -371,21 +412,12 @@ def import_ofs(method):
             else:
                 n_blocos=0
 
-            if lista_acabamentos[index] in lista_descricao_acabamento:
+            if lista_acabamentos[index] in lista_descricao_acabamento and lista_cts[index][-2:]=='PL':
                 posicao=lista_descricao_acabamento.index(lista_acabamentos[index])
                 acabamento=lista_tipo_acabamento[posicao]
             else:
                 acabamento='Qualquer'
 
-            id_ct=-1
-
-            for pos_ct in range(len(cts)):
-
-                if cts[pos_ct].nome==lista_cts[index] and cts[pos_ct].acabamento==acabamento:
-
-                    id_ct=pos_ct
-
-                    break
 
             id_items=[]
 
@@ -398,6 +430,14 @@ def import_ofs(method):
                     id_items.append(pos_item)
                     items[pos_item].id_ofs.append(index)
 
+            id_ct = -1
+
+            for pos_ct in range(len(cts)):
+
+                if cts[pos_ct].nome == lista_cts[index] and cts[pos_ct].acabamento == acabamento:
+                    id_ct = pos_ct
+
+                    break
 
             new_of = of(index, cod_of, duracao*60, quantidade, id_ct, codigo_material, descricao_material, codigo_precedencia,
                         id_items, n_blocos, viradas)
@@ -418,24 +458,27 @@ print('importar capacidade ocupada')
 
 def atualizar_capacidades(method):
 
-
-
     if method==0:
 
         df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='UTF-8')
         df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='UTF-8')
         lista_descricao_acabamento = df_acabamentos['acabamento'].tolist()
         lista_tipo_acabamento = df_acabamentos['tipo'].tolist()
-        df_ofs = df_ofs.drop_duplicates()
+
         df_ofs = df_ofs[df_ofs['Ordem de produção / planeada'].notnull()]
         df_ofs['Ordem de produção / planeada'] = df_ofs['Ordem de produção / planeada'].astype(int)
-        df_ofs = df_ofs[(df_ofs['Ordem de produção / planeada'] > 1600000000)]
-        df_ofs['Data-base do fim'] = df_ofs['Data-base do fim'].fillna(
-            datetime.datetime.now())
+        #df_ofs = df_ofs[(df_ofs['Ordem de produção / planeada'] > 1600000000)]
+
+        df_ofs=df_ofs[df_ofs['Tipo de Ordem de produção/planeada']!='KD']
+
+        df_ofs['Data-base do fim'] = df_ofs['Data-base do fim'].dropna()
+
         df_ofs['acabamento'] = df_ofs['Texto breve de material'].str.split('/').str[1]
         df_ofs['acabamento'] = df_ofs['acabamento'].str.split(' ').str[0]
 
         df_ofs['Data-base do fim'] = pd.to_datetime(df_ofs['Data-base do fim'], format='%d/%m/%Y')
+
+        df_ofs=df_ofs[pd.notnull(df_ofs['Data-base do fim'])]
 
         df_ofs['semana'] = df_ofs.apply(lambda row: row['Data-base do fim'].isocalendar()[1],axis=1)
         df_ofs['Duração da operação'] = df_ofs['Duração da operação'].str.replace(' ', '')
@@ -447,60 +490,83 @@ def atualizar_capacidades(method):
 
         df_ofs['semana']=df_ofs['semana']-semana_inicio_plano
 
-        df_ofs=df_ofs[['Centro de trabalho','semana','Duração da operação','acabamento']]
+        df_ofs=df_ofs[['Centro de trabalho','semana','Duração da operação','acabamento','Ordem de produção / planeada']]
+
+        df_ofs=df_ofs.reset_index()
 
         lista_cts=df_ofs['Centro de trabalho'].tolist()
         lista_semanas=df_ofs['semana'].tolist()
         lista_duracao=df_ofs['Duração da operação'].tolist()
         lista_acabamentos=df_ofs['acabamento'].tolist()
+        ordem=df_ofs['Ordem de produção / planeada'].tolist()
 
+        total=0
+        rows=[]
         with tqdm(total=len(lista_cts)) as pbar:
 
-            for index in range(len(lista_cts)):
-                if lista_acabamentos[index] in lista_descricao_acabamento:
+            for index in range(len(lista_duracao)):
+
+                if lista_acabamentos[index] in lista_descricao_acabamento and lista_cts[index][-2:]=='PL':
+
                     posicao = lista_descricao_acabamento.index(lista_acabamentos[index])
                     acabamento = lista_tipo_acabamento[posicao]
+
                 else:
+
                     acabamento = 'Qualquer'
 
                 for id_ct in range(len(cts)):
 
                     if cts[id_ct].nome==lista_cts[index] and cts[id_ct].acabamento==acabamento:
 
-                        pos_semana=lista_semanas[index]
+                        pos_semana = lista_semanas[index]
+
+                        if cts[id_ct].nome=='CRMRLMEI' and cts[id_ct].acabamento=='Qualquer' and lista_semanas[index]==4:
+
+                            rows.append(ordem[index])
+                            total+=lista_duracao[index]
 
                         cts[id_ct].capacidade[pos_semana]=cts[id_ct].capacidade[pos_semana]-lista_duracao[index]*60
 
                 pbar.update(1)
     pbar.close()
+    print(rows)
+    df=pd.DataFrame(rows)
+    df.to_csv('teste.csv')
 
+    print('ocupação:' + str(total*60))
+    print('capacidade no inicio' + str(cts[36].capacidade[6]))
 
 atualizar_capacidades(method)
 
-
 end=time.time()
-#print('tempo: ' + str(end-start))
+
+for index in range(len(cts[36].capacidade)):
+    ocupada=cts[36].capacidade_iniciais[index]-cts[36].capacidade[index]
+    print('semana ' + str(index+semana_inicio_plano))
+    print('capacidade ocupada ' + str(ocupada))
+    print('capacidade inicial ' + str(cts[36].capacidade_iniciais[index]))
+    print('capacidade atual ' + str(cts[36].capacidade[index]))
 
 def print_capacidade_reservada():
 
     rows=[]
 
-    for index in range(len(cts)):
+    for id_ct in range(len(cts)):
 
-        for id_ct in range(len(cts)):
+        for semana in range(len(cts[id_ct].capacidade)):
 
-            for semana in range(len(cts[id_ct].capacidade)):
-                new_row = {'centro de trabalho': cts[id_ct].nome, 'acabamento': cts[id_ct].acabamento,
-                           'semana': semana + semana_inicio_plano+1,
-                           'carga ocupada': cts[id_ct].capacidade_iniciais[semana] - cts[id_ct].capacidade[semana]}
+            if id_ct==36:
+                print('x')
 
-                rows.append(new_row)
+            new_row = {'centro de trabalho': cts[id_ct].nome, 'acabamento': cts[id_ct].acabamento,
+                       'semana': semana + semana_inicio_plano,
+                       'carga ocupada': cts[id_ct].capacidade_iniciais[semana] - cts[id_ct].capacidade[semana]}
+
+            rows.append(new_row)
 
     df = pd.DataFrame(rows)
     df.to_csv('data/11. ocupacao ofs planeadas.csv')
-
-
-
 
 def sort_by_leadtime():
 
@@ -588,6 +654,7 @@ def alocar(id_of,int_semana,id_ov):
     global ovs
 
     id_ct = ofs[id_of].id_ct
+
     blocos = ofs[id_of].blocos
     viradas = ofs[id_of].viradas
     duracao = int(ofs[id_of].duracao)
@@ -596,12 +663,23 @@ def alocar(id_of,int_semana,id_ov):
 
 
     cts[id_ct].capacidade_blocos[int_semana]=cts[id_ct].capacidade_blocos[int_semana]-blocos
+
     cts[id_ct].capacidade_virados[int_semana]=cts[id_ct].capacidade_virados[int_semana]-viradas
+
     if cliente_interno!=-1:
         cts[id_ct].capacidade_clientes[cliente_interno][int_semana] = cts[id_ct].capacidade_clientes[cliente_interno][int_semana]-duracao
     if cliente_final!=-1:
         cts[id_ct].capacidade_clientes[cliente_final][int_semana] = cts[id_ct].capacidade_clientes[cliente_final][int_semana] - duracao
+
     cts[id_ct].capacidade[int_semana]=cts[id_ct].capacidade[int_semana]-duracao
+
+    if cts[id_ct].nome=='CNMLAMPL' and cts[id_ct].acabamento=='E01':
+
+        for pos_ct in range(len(cts)):
+            if cts[pos_ct].nome=='CNMLAMPL' and cts[pos_ct].acabamento=='Qualquer':
+                id_adicional=pos_ct
+                cts[id_adicional].capacidade[int_semana]=cts[id_adicional].capacidade[int_semana]-duracao
+                break
 
     ofs[id_of].id_alocada=int_semana
 
@@ -620,12 +698,22 @@ def desalocar(id_of,int_semana,id_ov):
 
     cts[id_ct].capacidade_blocos[int_semana] = cts[id_ct].capacidade_blocos[int_semana] + blocos
     cts[id_ct].capacidade_virados[int_semana] = cts[id_ct].capacidade_virados[int_semana] + viradas
+
     if cliente_interno != -1:
         cts[id_ct].capacidade_clientes[cliente_interno][int_semana] = cts[id_ct].capacidade_clientes[cliente_interno][int_semana] + duracao
+
     if cliente_final != -1:
         cts[id_ct].capacidade_clientes[cliente_final][int_semana] = cts[id_ct].capacidade_clientes[cliente_final][
                                                                         int_semana] + duracao
+
     cts[id_ct].capacidade[int_semana] = cts[id_ct].capacidade[int_semana] + duracao
+
+    if cts[id_ct].nome=='CNMLAMPL' and cts[id_ct].acabamento=='E01':
+        for pos_ct in range(len(cts)):
+            if cts[pos_ct].nome=='CNMLAMPL' and cts[pos_ct].acabamento=='Qualquer':
+                id_adicional=pos_ct
+                cts[id_adicional].capacidade[int_semana]=cts[id_adicional].capacidade[int_semana]+duracao
+                break
 
     ofs[id_of].id_alocada = -1
 
@@ -725,7 +813,7 @@ def minimizar_wip_item(id_item,max_semana):
 
                 id_ct=ofs[id_of].id_ct
 
-                if verificar_capacidades(id_of,count,id_ov,0.95)==True:
+                if (verificar_capacidades(id_of,count,id_ov,0.95)==True) and (verificar_acabamento(id_of,count)==True):
                     semana_anterior=ofs[id_of].id_alocada
                     if id_ct!=-1:
                         desalocar(id_of,ofs[id_of].id_alocada,id_ov)
@@ -791,13 +879,14 @@ def print_output():
                  'item':items[ofs[index].id_items[0]].cod_item,
                  'id ov':items[ofs[index].id_items[0]].id_ov,
                  'ov':ovs[items[ofs[index].id_items[0]].id_ov].cod_ov,
-                 'semana':ofs[index].id_alocada + semana_inicio_plano+1,
+                 'semana':ofs[index].id_alocada + semana_inicio_plano,
                  'data desejada':ovs[items[ofs[index].id_items[0]].id_ov].data_desejada+semana_inicio_plano+1,
                  'centro de trabalho':cts[ofs[index].id_ct].nome,
                  'acabamento': cts[ofs[index].id_ct].acabamento,
                  'blocos':ofs[index].blocos,
                  'ccs':ovs[items[ofs[index].id_items[0]].id_ov].id_interno,
-                 'virados':ofs[index].viradas}
+                 'virados':ofs[index].viradas,
+                 'referência':ofs[index].descricao_material}
 
         rows.append(new_row)
 
@@ -805,7 +894,7 @@ def print_output():
     if method==0:
         df.to_csv('data/09. output.csv')
     elif method==1:
-        df.to_csv('data/12. output planeado.csv')
+        df.to_csv('data/13. output planeado.csv')
 
 
 def print_mapa_precedencias():
@@ -838,6 +927,73 @@ def print_mapa_precedencias():
 
     df = pd.DataFrame(rows)
     df.to_csv('data/10. mapa precedencias.csv')
+
+def partir_of(id_of):
+
+    global ofs
+
+    id_ct=ofs[id_of].id_ct
+
+    capacidades_iniciais=cts[id_ct].capacidade_iniciais
+
+    capacidade_media=sum(capacidades_iniciais) / len(capacidades_iniciais)
+
+    if ofs[id_of].duracao>0.5*capacidade_media:
+
+        numero_ofs=ofs[id_of].duracao//(0.5*capacidade_media)
+
+        if numero_ofs>1:
+
+            nova_duracao=ofs[id_of].duracao/numero_ofs
+            nova_quantidade=ofs[id_of].quantidade/numero_ofs
+            novo_nblocos=ofs[id_of].blocos/numero_ofs
+            novo_viradas=ofs[id_of].viradas/numero_ofs
+
+            # alterar a duracao da primeira of
+
+            ofs[id_of].duracao=nova_duracao
+            ofs[id_of].nova_quantidade=nova_quantidade
+            ofs[id_of].blocos=novo_nblocos
+            ofs[id_of].viradas=novo_viradas
+
+            # criar outras ofs com a nova duracao e com as precedencias da inicial
+
+            id_nova=len(ofs)
+
+            numero_ofs=int(numero_ofs)
+
+            for pos in range(numero_ofs-1): #-1 porque já estamos a alterar a que existe
+
+                new_of=of(id_nova,ofs[id_of].cod_of,nova_duracao,nova_quantidade,id_ct,ofs[id_of].codigo_material,ofs[id_of].descricao_material,ofs[id_of].codigo_precedencia,ofs[id_of].id_items,novo_nblocos,novo_viradas)
+                ofs.append(new_of)
+
+def verificar_acabamento(id_of,semana):
+
+    id_ct=ofs[id_of].id_ct
+
+    if cts[id_ct].acabamento!='Qualquer':
+
+        if cts[id_ct].capacidade_iniciais[semana]!=cts[id_ct].capacidade[semana]:
+
+            return True
+
+        else:
+
+            return False
+
+    else:
+
+        return True
+
+
+
+
+
+
+
+
+
+
 
 
 
