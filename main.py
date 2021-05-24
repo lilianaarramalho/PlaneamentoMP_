@@ -19,9 +19,13 @@ print_capacidade_reservada()
 
 print_capacidades()
 
+count=0
+
 for index in range(len(ofs)):
 
-    partir_of(index)
+    count=count+partir_of(index)
+
+print('count ' + str(count))
 
 for index in range(len(id_ovs)):
 
@@ -68,9 +72,13 @@ for index in range(len(id_ovs)):
                     n_semanas=len(cts[id_ct].capacidade)-semana_pretendida-1
 
                     while semana_impossivel == True and semana_pretendida<n_semanas:
+
                         semana_pretendida+=1
+
                         if verificar_capacidades(id_of,semana_pretendida,id_ov,0.95)==True:
+
                             semana_impossivel = False
+
                             alocar(id_of, semana_pretendida, id_ov)
 
         if carga_completa==0:
@@ -83,6 +91,7 @@ for index in range(len(id_ovs)):
 
 print_output()
 print_mapa_precedencias()
+output_partidas()
 
 
 

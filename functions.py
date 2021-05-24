@@ -333,9 +333,6 @@ def import_ofs(method):
                         id_interno_ov = id_lista
                         break
 
-            if cod_ov==3820011551:
-                print('x')
-
             new_ov=ov(index,cod_ov,id_cliente_ov,id_interno_ov,semana,semana_criacao)
             ovs.append(new_ov)
             pbar.update(1)
@@ -556,9 +553,6 @@ def print_capacidade_reservada():
 
         for semana in range(len(cts[id_ct].capacidade)):
 
-            if id_ct==36:
-                print('x')
-
             new_row = {'centro de trabalho': cts[id_ct].nome, 'acabamento': cts[id_ct].acabamento,
                        'semana': semana + semana_inicio_plano,
                        'carga ocupada': cts[id_ct].capacidade_iniciais[semana] - cts[id_ct].capacidade[semana]}
@@ -597,6 +591,7 @@ def sort_by_leadtime():
         else:
 
             data_min=semana_desejada
+
         posicao_alocar = bisect.bisect_left(sorted_leadtimes, data_min)
         bisect.insort(sorted_leadtimes, data_min)
         sorted_index.insert(posicao_alocar,index)
@@ -875,20 +870,22 @@ def print_output():
 
     for index in range(len(ofs)):
 
-        new_row={'of':ofs[index].cod_of,
-                 'item':items[ofs[index].id_items[0]].cod_item,
-                 'id ov':items[ofs[index].id_items[0]].id_ov,
-                 'ov':ovs[items[ofs[index].id_items[0]].id_ov].cod_ov,
-                 'semana':ofs[index].id_alocada + semana_inicio_plano,
-                 'data desejada':ovs[items[ofs[index].id_items[0]].id_ov].data_desejada+semana_inicio_plano+1,
-                 'centro de trabalho':cts[ofs[index].id_ct].nome,
-                 'acabamento': cts[ofs[index].id_ct].acabamento,
-                 'blocos':ofs[index].blocos,
-                 'ccs':ovs[items[ofs[index].id_items[0]].id_ov].id_interno,
-                 'virados':ofs[index].viradas,
-                 'referência':ofs[index].descricao_material}
+        if ofs[index].id_ct!=-1 and ofs[index].id_alocada!=-1:
 
-        rows.append(new_row)
+            new_row={'of':ofs[index].cod_of,
+                     'item':items[ofs[index].id_items[0]].cod_item,
+                     'id ov':items[ofs[index].id_items[0]].id_ov,
+                     'ov':ovs[items[ofs[index].id_items[0]].id_ov].cod_ov,
+                     'semana':ofs[index].id_alocada + semana_inicio_plano,
+                     'data desejada':ovs[items[ofs[index].id_items[0]].id_ov].data_desejada+semana_inicio_plano+1,
+                     'centro de trabalho':cts[ofs[index].id_ct].nome,
+                     'acabamento': cts[ofs[index].id_ct].acabamento,
+                     'blocos':ofs[index].blocos,
+                     'ccs':ovs[items[ofs[index].id_items[0]].id_ov].id_interno,
+                     'virados':ofs[index].viradas,
+                     'referência':ofs[index].descricao_material}
+
+            rows.append(new_row)
 
     df = pd.DataFrame(rows)
     if method==0:
@@ -934,6 +931,8 @@ def partir_of(id_of):
 
     id_ct=ofs[id_of].id_ct
 
+    count=0
+
     capacidades_iniciais=cts[id_ct].capacidade_iniciais
 
     capacidade_media=sum(capacidades_iniciais) / len(capacidades_iniciais)
@@ -943,6 +942,8 @@ def partir_of(id_of):
         numero_ofs=ofs[id_of].duracao//(0.5*capacidade_media)
 
         if numero_ofs>1:
+
+            count+=1
 
             nova_duracao=ofs[id_of].duracao/numero_ofs
             nova_quantidade=ofs[id_of].quantidade/numero_ofs
@@ -967,6 +968,9 @@ def partir_of(id_of):
                 new_of=of(id_nova,ofs[id_of].cod_of,nova_duracao,nova_quantidade,id_ct,ofs[id_of].codigo_material,ofs[id_of].descricao_material,ofs[id_of].codigo_precedencia,ofs[id_of].id_items,novo_nblocos,novo_viradas)
                 ofs.append(new_of)
 
+    return count
+
+
 def verificar_acabamento(id_of,semana):
 
     id_ct=ofs[id_of].id_ct
@@ -984,6 +988,65 @@ def verificar_acabamento(id_of,semana):
     else:
 
         return True
+
+def output_partidas():
+
+    codigos=[]
+    max=[]
+    min=[]
+    count=[]
+
+    for index in range(len(ofs)):
+
+        cod_of=ofs[index].cod_of
+        semana_alocada=ofs[index].id_alocada
+
+        if cod_of in codigos:
+
+            posicao_codigo=codigos.index(cod_of)
+
+            codigos[posicao_codigo].append(cod_of)
+
+            count[posicao_codigo] = count[posicao_codigo] + 1
+
+            if max[posicao_codigo]<semana_alocada:
+
+                max[posicao_codigo]=semana_alocada
+
+            if min[posicao_codigo]>semana_alocada:
+
+                min[posicao_codigo]=semana_alocada
+
+        else:
+
+            codigos.insert(0,[cod_of])
+            max.insert(0,semana_alocada)
+            min.insert(0,semana_alocada)
+            count.insert(0,1)
+
+    rows=[]
+
+    for index in range(len(count)):
+
+        if count[index]>1:
+
+            cod_of=codigos[index][0]
+            max_semana=max[index]
+            min_semana=min[index]
+
+            new_row={'of':cod_of,'semana maxima':max_semana,'semana minima':min_semana,'numero ofs':count,'diferenca':max_semana-min_semana+1-count}
+
+            rows.append(new_row)
+
+    df=pd.DataFrame(rows)
+
+    df.to_csv('data/13. ofs partidas.csv')
+
+
+
+
+
+
 
 
 
