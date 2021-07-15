@@ -13,6 +13,8 @@ import datetime
 
 ler_cts_embalagem()
 
+import_bom()
+
 calcular_n_ofs(0.5)
 
 parametro_duracao=60
@@ -33,12 +35,16 @@ len_in=len(ofs)
 
 start = time.time()
 
+importar_capacidade_cilindros()
+
 index=0
 ov_alocada=False
 count_impossivel=0
 
 print_acabamentos()
 print_wip_inicial(id_ovs)
+
+
 
 if method==1:
 

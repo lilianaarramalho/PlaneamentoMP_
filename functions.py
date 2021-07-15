@@ -239,7 +239,7 @@ def import_ofs(method):
 
     lista_materials=ler_cts_embalagem()
 
-    read_file = pd.read_excel("ACC_Ordens por planear - Kaizen.xlsx")
+    read_file = pd.read_excel("ACC_Ordens por planear - Kaizen.xlsx") #todo testar só com read_excel
     read_file.to_csv("data/08.  ofs.csv", index=None, header=True, date_format='%d/%m/%Y', encoding='iso-8859-1',errors='ignore')
 
     ofs=[]
@@ -573,6 +573,35 @@ ovs,items,ofs=import_ofs(method)
 
 print('importar capacidade ocupada')
 
+def import_bom():
+
+    global lista_calandrados
+    global lista_plyups
+
+    df_bom=pd.read_csv('data/19. BOM.csv',encoding='iso-8859-1')
+
+    df_calandrados=df_bom[(df_bom['Descrição Operação'].str.contains("CALANDRADOS")) & (df_bom['Centro trabalho'].str[:3]=='CRM')]
+    df_plyups = df_bom[(df_bom['Descrição Operação'].str.contains("PLY-UP")) & (df_bom['Centro trabalho'].str[:3] == 'CRM')]
+
+    df_calandrados['Material'].astype(int)
+    df_plyups['Material'].astype(int)
+
+    lista_calandrados=list(map(float,df_calandrados['Material'].tolist()))
+    lista_plyups = list(map(float,df_plyups['Material'].tolist()))
+
+    for pos_of in range(len(ofs)):
+
+        id_of=ofs[pos_of].id
+
+        precedencias=list(map(float,ofs[id_of].codigo_precedencia))
+
+        if any(x in precedencias for x in lista_calandrados):
+            ofs[id_of].calandrado=1
+        elif any(x in precedencias for x in lista_plyups):
+            ofs[id_of].plyup=1
+
+    return lista_calandrados,lista_plyups
+
 def atualizar_capacidades(method):
 
     if method==0 or method==1:
@@ -783,6 +812,50 @@ def verificar_capacidades(id_of,int_semana,id_ov,capacidade_max,duracao):
     cliente_interno = ovs[id_ov].id_interno
     cliente_final = ovs[id_ov].id_cliente
 
+    if ofs[id_of].calandrado == 1:
+        max_capacidade = max(capacidade_calandrados)
+        count_refs = 0
+        pos_material = -1
+
+        for index in range(len(pos_calandrados)):
+            if pos_calandrados[index]==int(ofs[id_of].codigo_material):
+                material_atual=index
+                break
+
+        for sublist in capacidade_calandrados:
+            pos_material += 1
+            if sublist[int_semana] != max_capacidade and pos_material!=material_atual:
+                count_refs += 1
+
+        if count_refs>=2:
+            return False
+
+        if capacidade_calandrados[material_atual][int_semana]+ofs[id_of].quantidade_precedencia<0:
+            return False
+
+    if ofs[id_of].plyup == 1:
+        max_capacidade = max(capacidade_plyups)
+        max_capacidade=max(max_capacidade)
+        count_refs = 0
+        pos_material = -1
+        material_atual=-1
+
+        for index in range(len(pos_plyups)):
+            if pos_plyups[index]==int(ofs[id_of].codigo_material):
+                material_atual=index
+                break
+
+        for sublist in capacidade_plyups:
+            pos_material += 1
+            if sublist[int_semana] != max_capacidade and pos_material!=material_atual:
+                count_refs += 1
+
+        if count_refs>=2:
+            return False
+
+        if material_atual!=-1:
+            if capacidade_plyups[material_atual][int_semana]+ofs[id_of].quantidade_precedencia<0:
+                return False
 
     if cts[id_ct].capacidade_blocos[int_semana]<blocos:
         resultado=False
@@ -821,6 +894,8 @@ def verificar_capacidades(id_of,int_semana,id_ov,capacidade_max,duracao):
 
     return resultado
 
+
+
 def alocar(id_of,int_semana,id_ov,duracao):
 
     global ofs
@@ -833,6 +908,30 @@ def alocar(id_of,int_semana,id_ov,duracao):
     viradas = ofs[id_of].viradas
     cliente_interno = ovs[id_ov].id_interno
     cliente_final = ovs[id_ov].id_cliente
+    fator_conversao=duracao/ofs[id_of].duracao
+    material_atual=-1
+
+    if ofs[id_of].calandrado == 1:
+
+        pos_material = -1
+
+        for index in range(len(pos_calandrados)):
+            if pos_calandrados[index]==int(ofs[id_of].codigo_material):
+                material_atual=index
+                break
+
+        capacidade_calandrados[material_atual][int_semana]=capacidade_calandrados[material_atual][int_semana]-fator_conversao*ofs[id_of].quantidade_precedencia
+
+    if ofs[id_of].plyup == 1 and material_atual!=-1:
+
+        pos_material = -1
+
+        for index in range(len(pos_plyups)):
+            if pos_plyups[index]==int(ofs[id_of].codigo_material):
+                material_atual=index
+                break
+
+        capacidade_plyups[material_atual][int_semana]=capacidade_plyups[material_atual][int_semana]-fator_conversao*ofs[id_of].quantidade_precedencia
 
     cts[id_ct].capacidade_blocos[int_semana]=cts[id_ct].capacidade_blocos[int_semana]-blocos
 
@@ -869,9 +968,36 @@ def desalocar(id_of,int_semana,id_ov,duracao):
     viradas = ofs[id_of].viradas
     cliente_interno = ovs[id_ov].id_interno
     cliente_final = ovs[id_ov].id_cliente
+    fator_conversao=duracao/ofs[id_of].duracao
+
+    material_atual=-1
 
     cts[id_ct].capacidade_blocos[int_semana] = cts[id_ct].capacidade_blocos[int_semana] + blocos
     cts[id_ct].capacidade_virados[int_semana] = cts[id_ct].capacidade_virados[int_semana] + viradas
+
+    if ofs[id_of].calandrado == 1 and material_atual!=-1:
+
+        pos_material = -1
+
+        for index in range(len(pos_calandrados)):
+            if pos_calandrados[index] == int(ofs[id_of].codigo_material):
+                material_atual = index
+                break
+
+        capacidade_calandrados[material_atual][int_semana] = capacidade_calandrados[material_atual][int_semana] + fator_conversao*ofs[
+            id_of].quantidade_precedencia
+
+    if ofs[id_of].plyup == 1 and material_atual!=-1:
+
+        pos_material = -1
+
+        for index in range(len(pos_plyups)):
+            if pos_plyups[index] == int(ofs[id_of].codigo_material):
+                material_atual = index
+                break
+
+        capacidade_plyups[material_atual][int_semana] = capacidade_plyups[material_atual][int_semana] + fator_conversao*ofs[
+            id_of].quantidade_precedencia
 
     if cliente_interno != -1:
         cts[id_ct].capacidade_clientes[cliente_interno][int_semana] = cts[id_ct].capacidade_clientes[cliente_interno][int_semana] + duracao
@@ -1061,9 +1187,10 @@ def print_output(method):
 
             flag_setup=-1
             for pos_of in range(len(ofs)):
-                if ofs[pos_of].cod_material==ofs[index].cod_material and ofs[pos_of].dim1==ofs[index].dim1 and ofs[pos_of].dim2==ofs[index].dim2 and min(ofs[pos_of].id_alocada)<min(ofs[index].id_alocada) and ofs[index].duracao<=60:
-                    if flag_setup==-1 or min(ofs[pos_of].id_alocada)<flag_setup:
-                        flag_setup=min(ofs[pos_of].id_alocada)+semana_inicio_plano
+                if len(ofs[pos_of].id_alocada) > 0:
+                    if ofs[pos_of].cod_material==ofs[index].cod_material and ofs[pos_of].dim1==ofs[index].dim1 and ofs[pos_of].dim2==ofs[index].dim2 and min(ofs[pos_of].id_alocada)<min(ofs[index].id_alocada) and ofs[index].duracao<=60:
+                        if flag_setup==-1 or min(ofs[pos_of].id_alocada)<flag_setup:
+                            flag_setup=min(ofs[pos_of].id_alocada)+semana_inicio_plano
 
 
             new_row={'of':ofs[index].cod_of,
@@ -1727,38 +1854,40 @@ def gerar_ficheiro_excel(planeador,id_ovs,wbk,wbkName,wks):
 
                     id_of = lista_ofs[pos_of]
 
-                    id_prod += 1
+                    if len(ofs[id_of].id_alocada)>0:
 
-                    year = datetime.datetime.now().year
-                    week_num = min(ofs[id_of].id_alocada) + semana_inicio_plano
+                        id_prod += 1
 
-                    date = datetime.date(year, 1, 1) + relativedelta(weeks=+week_num)
-                    if len(str(date.month)) == 1:
-                        month = "0" + str(date.month)
-                    else:
-                        month = date.month
+                        year = datetime.datetime.now().year
+                        week_num = min(ofs[id_of].id_alocada) + semana_inicio_plano
 
-                    if len(str(date.day)) == 1:
-                        day = "0" + str(date.day)
-                    else:
-                        day = date.day
+                        date = datetime.date(year, 1, 1) + relativedelta(weeks=+week_num)
+                        if len(str(date.month)) == 1:
+                            month = "0" + str(date.month)
+                        else:
+                            month = date.month
 
-                    date_str = str(date.year) + str(month) + str(day)
+                        if len(str(date.day)) == 1:
+                            day = "0" + str(date.day)
+                        else:
+                            day = date.day
 
-                    wks.cell(row=id_prod + 2, column=1).value = id_prod
-                    wks.cell(row=id_prod + 2, column=2).value = ovs[id_ov].cod_ov
-                    wks.cell(row=id_prod + 2, column=3).value = items[id_item].cod_item
-                    wks.cell(row=id_prod + 2, column=4).value = ofs[id_of].codigo_material
-                    wks.cell(row=id_prod + 2, column=5).value = 3801
-                    wks.cell(row=id_prod + 2, column=6).value = ofs[id_of].tipo_ordem
-                    wks.cell(row=id_prod + 2, column=7).value = ofs[id_of].quantidade
-                    wks.cell(row=id_prod + 2, column=8).value = "0001"
-                    wks.cell(row=id_prod + 2, column=9).value = ""
-                    wks.cell(row=id_prod + 2, column=10).value = date_str
-                    wks.cell(row=id_prod + 2, column=11).value = ""
-                    wks.cell(row=id_prod + 2, column=12).value = ""
-                    wks.cell(row=id_prod + 2, column=13).value = "X"
-                    wks.cell(row=id_prod + 2, column=14).value = "X"
+                        date_str = str(date.year) + str(month) + str(day)
+
+                        wks.cell(row=id_prod + 2, column=1).value = id_prod
+                        wks.cell(row=id_prod + 2, column=2).value = ovs[id_ov].cod_ov
+                        wks.cell(row=id_prod + 2, column=3).value = items[id_item].cod_item
+                        wks.cell(row=id_prod + 2, column=4).value = ofs[id_of].codigo_material
+                        wks.cell(row=id_prod + 2, column=5).value = 3801
+                        wks.cell(row=id_prod + 2, column=6).value = ofs[id_of].tipo_ordem
+                        wks.cell(row=id_prod + 2, column=7).value = ofs[id_of].quantidade
+                        wks.cell(row=id_prod + 2, column=8).value = "0001"
+                        wks.cell(row=id_prod + 2, column=9).value = ""
+                        wks.cell(row=id_prod + 2, column=10).value = date_str
+                        wks.cell(row=id_prod + 2, column=11).value = ""
+                        wks.cell(row=id_prod + 2, column=12).value = ""
+                        wks.cell(row=id_prod + 2, column=13).value = "X"
+                        wks.cell(row=id_prod + 2, column=14).value = "X"
 
     wbk.save(wbkName)
     wbk.close()
@@ -1836,40 +1965,42 @@ def gerar_output_sap_2(id_ovs):
 
                         id_of = lista_ofs[pos_of]
 
-                        id_prod += 1
+                        if len(ofs[id_of].id_alocada)>0:
 
-                        year = datetime.datetime.now().year
-                        week_num = min(ofs[id_of].id_alocada) + semana_inicio_plano
+                            id_prod += 1
 
-                        date = datetime.date(year, 1, 1) + relativedelta(weeks=+week_num)
-                        if len(str(date.month)) == 1:
-                            month = "0" + str(date.month)
-                        else:
-                            month = date.month
+                            year = datetime.datetime.now().year
+                            week_num = min(ofs[id_of].id_alocada) + semana_inicio_plano
 
-                        if len(str(date.day)) == 1:
-                            day = "0" + str(date.day)
-                        else:
-                            day = date.day
+                            date = datetime.date(year, 1, 1) + relativedelta(weeks=+week_num)
+                            if len(str(date.month)) == 1:
+                                month = "0" + str(date.month)
+                            else:
+                                month = date.month
 
-                        date_str = str(date.year) + str(month) + str(day)
+                            if len(str(date.day)) == 1:
+                                day = "0" + str(date.day)
+                            else:
+                                day = date.day
 
-                        new_row = {"ID de Importação": id_prod,
-                                   "Ordem de Venda": ovs[id_ov].cod_ov,
-                                   "Item da Ordem de Venda": items[id_item].cod_item,
-                                   "Material": ofs[id_of].codigo_material,
-                                   "Centro": 3801,
-                                   "Tipo de Ordem": ofs[id_of].tipo_ordem,
-                                   'Quantidade Total': ofs[id_of].quantidade,
-                                   'Versão de Produção': "0001",
-                                   'Data de Inicio': "",
-                                   "Data de fim": date_str,
-                                   "Kanban": "",
-                                   "Texto Descritivo": "",
-                                   "Consumos não Planeados": "X",
-                                   "MTO": "X"}
+                            date_str = str(date.year) + str(month) + str(day)
 
-                        output_final.append(new_row)
+                            new_row = {"ID de Importação": id_prod,
+                                       "Ordem de Venda": ovs[id_ov].cod_ov,
+                                       "Item da Ordem de Venda": items[id_item].cod_item,
+                                       "Material": ofs[id_of].codigo_material,
+                                       "Centro": 3801,
+                                       "Tipo de Ordem": ofs[id_of].tipo_ordem,
+                                       'Quantidade Total': ofs[id_of].quantidade,
+                                       'Versão de Produção': "0001",
+                                       'Data de Inicio': "",
+                                       "Data de fim": date_str,
+                                       "Kanban": "",
+                                       "Texto Descritivo": "",
+                                       "Consumos não Planeados": "X",
+                                       "MTO": "X"}
+
+                            output_final.append(new_row)
 
         df_sap = pd.DataFrame(output_final)
         df_sap.to_excel('SAP/' + str(planeador) + '.xlsx', index=False, encoding='iso-8859-1')
@@ -1915,6 +2046,49 @@ def atualizar_capacidade_ref_c(method):
                 if semana>0 and centro==cts[id_ct].nome:
 
                     cts[id_ct].capacidade[semana]-=ocupacao*cts[id_ct].capacidade_iniciais[semana]
+
+def importar_capacidade_cilindros():
+
+    global pos_calandrados
+    global pos_plyups
+    global capacidade_calandrados
+    global capacidade_plyups
+
+    tamanho=len(cts[0].capacidade_iniciais)
+
+    pos_calandrados=[]
+    pos_plyups=[]
+    capacidade_calandrados=[]
+    capacidade_plyups=[]
+
+    df_bom=pd.read_csv('data/19. BOM.csv',encoding='iso-8859-1')
+    df_bom['Componente'] = pd.to_numeric(df_bom['Componente'], errors='coerce')
+    df_bom['Material'] = pd.to_numeric(df_bom['Material'], errors='coerce')
+    lista_material_of_calandrado=df_bom[df_bom['Componente'].isin(lista_calandrados)]
+    lista_material_of_calandrado=lista_material_of_calandrado[['Material']]
+    lista_material_of_calandrado=lista_material_of_calandrado['Material'].unique()
+    lista_material_of_calandrado =lista_material_of_calandrado.tolist()
+
+    lista_material_of_plyups = df_bom[df_bom['Componente'].isin(lista_plyups)]
+    lista_material_of_plyups = lista_material_of_plyups[['Material']]
+    lista_material_of_plyups=lista_material_of_plyups['Material'].unique()
+    lista_material_of_plyups = lista_material_of_plyups.tolist()
+
+    for index in range(len(lista_material_of_calandrado)):
+        pos_calandrados.append(lista_material_of_calandrado[index])
+        temp=[]
+        for semana in range(tamanho):
+            temp.append(4*26)
+        capacidade_calandrados.insert(0,temp)
+
+    for index in range(len(lista_material_of_plyups)):
+        pos_plyups.append(lista_material_of_plyups[index])
+        temp=[]
+        for semana in range(tamanho):
+            temp.append(3*26)
+        capacidade_plyups.insert(0,temp)
+
+
 
 
 
