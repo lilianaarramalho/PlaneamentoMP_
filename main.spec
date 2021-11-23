@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\Liliana Ramalho\\PycharmProjects\\PlaneamentoMP'],
+             pathex=['C:\\Users\\Liliana Ramalho\\OneDrive - Kaizen Institute Ltd. (KIAG)\\Desktop\\PlaneamentoMP'],
              binaries=[],
              datas=[],
              hiddenimports=[],

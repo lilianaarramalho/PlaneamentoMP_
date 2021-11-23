@@ -4,33 +4,21 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._compat',
+  ('pkg_resources._vendor.packaging.markers',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
+  ('pkg_resources._vendor',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.six',
+  ('pkg_resources._vendor.packaging.tags',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
-   'PYMODULE'),
-  ('struct',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\struct.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.appdirs',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
    'PYMODULE'),
   ('ctypes',
    'c:\\users\\liliana '
@@ -40,33 +28,177 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\ctypes\\_endian.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
+  ('struct',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\struct.py',
    'PYMODULE'),
-  ('string',
+  ('distutils.util',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\string.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\util.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.markers',
+  ('distutils.filelist',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\filelist.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
+  ('distutils.debug',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\debug.py',
    'PYMODULE'),
-  ('pkg_resources._vendor',
+  ('fnmatch',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\fnmatch.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.pyparsing',
+  ('distutils.file_util',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\file_util.py',
    'PYMODULE'),
-  ('uuid',
+  ('distutils.dir_util',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\uuid.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\dir_util.py',
+   'PYMODULE'),
+  ('py_compile',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\py_compile.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.metadata',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\metadata.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('typing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\typing.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('contextlib',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\contextlib.py',
+   'PYMODULE'),
+  ('configparser',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\configparser.py',
+   'PYMODULE'),
+  ('email',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('email.utils',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\utils.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('calendar',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\calendar.py',
+   'PYMODULE'),
+  ('argparse',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\argparse.py',
+   'PYMODULE'),
+  ('shutil',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\shutil.py',
+   'PYMODULE'),
+  ('tarfile',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\tarfile.py',
+   'PYMODULE'),
+  ('gzip',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\gzip.py',
+   'PYMODULE'),
+  ('_compression',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_compression.py',
+   'PYMODULE'),
+  ('lzma',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\lzma.py',
+   'PYMODULE'),
+  ('bz2',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\bz2.py',
+   'PYMODULE'),
+  ('threading',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\threading.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_threading_local.py',
+   'PYMODULE'),
+  ('copy',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\copy.py',
+   'PYMODULE'),
+  ('gettext',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\gettext.py',
+   'PYMODULE'),
+  ('urllib.parse',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('datetime',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\datetime.py',
+   'PYMODULE'),
+  ('_strptime',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_strptime.py',
+   'PYMODULE'),
+  ('socket',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\socket.py',
+   'PYMODULE'),
+  ('selectors',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\selectors.py',
+   'PYMODULE'),
+  ('random',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\random.py',
+   'PYMODULE'),
+  ('statistics',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\statistics.py',
+   'PYMODULE'),
+  ('decimal',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\decimal.py',
+   'PYMODULE'),
+  ('_pydecimal',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_pydecimal.py',
+   'PYMODULE'),
+  ('contextvars',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\contextvars.py',
+   'PYMODULE'),
+  ('fractions',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\fractions.py',
+   'PYMODULE'),
+  ('numbers',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\numbers.py',
    'PYMODULE'),
   ('hashlib',
    'c:\\users\\liliana '
@@ -80,17 +212,13 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\pickle.py',
    'PYMODULE'),
+  ('pprint',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\pprint.py',
+   'PYMODULE'),
   ('doctest',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\doctest.py',
-   'PYMODULE'),
-  ('argparse',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\argparse.py',
-   'PYMODULE'),
-  ('gettext',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\gettext.py',
    'PYMODULE'),
   ('unittest',
    'c:\\users\\liliana '
@@ -116,10 +244,6 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\signal.py',
    'PYMODULE'),
-  ('selectors',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\selectors.py',
-   'PYMODULE'),
   ('asyncio.windows_events',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\asyncio\\windows_events.py',
@@ -135,10 +259,6 @@
   ('ssl',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\ssl.py',
-   'PYMODULE'),
-  ('calendar',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\calendar.py',
    'PYMODULE'),
   ('base64',
    'c:\\users\\liliana '
@@ -159,10 +279,6 @@
   ('asyncio.threads',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\asyncio\\threads.py',
-   'PYMODULE'),
-  ('contextvars',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\contextvars.py',
    'PYMODULE'),
   ('asyncio.subprocess',
    'c:\\users\\liliana '
@@ -216,10 +332,6 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\multiprocessing\\heap.py',
    'PYMODULE'),
-  ('bisect',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\bisect.py',
-   'PYMODULE'),
   ('multiprocessing.resource_tracker',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\multiprocessing\\resource_tracker.py',
@@ -231,110 +343,6 @@
   ('runpy',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\runpy.py',
-   'PYMODULE'),
-  ('importlib.util',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\util.py',
-   'PYMODULE'),
-  ('contextlib',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\contextlib.py',
-   'PYMODULE'),
-  ('importlib._bootstrap_external',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\_bootstrap_external.py',
-   'PYMODULE'),
-  ('importlib.metadata',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\metadata.py',
-   'PYMODULE'),
-  ('configparser',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\configparser.py',
-   'PYMODULE'),
-  ('email',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\__init__.py',
-   'PYMODULE'),
-  ('email._header_value_parser',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_header_value_parser.py',
-   'PYMODULE'),
-  ('email.utils',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\utils.py',
-   'PYMODULE'),
-  ('email._parseaddr',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_parseaddr.py',
-   'PYMODULE'),
-  ('urllib.parse',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\urllib\\parse.py',
-   'PYMODULE'),
-  ('email._encoded_words',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_encoded_words.py',
-   'PYMODULE'),
-  ('urllib',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\urllib\\__init__.py',
-   'PYMODULE'),
-  ('email.header',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\header.py',
-   'PYMODULE'),
-  ('email.base64mime',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\base64mime.py',
-   'PYMODULE'),
-  ('email.quoprimime',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\quoprimime.py',
-   'PYMODULE'),
-  ('email.charset',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\charset.py',
-   'PYMODULE'),
-  ('email.encoders',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\encoders.py',
-   'PYMODULE'),
-  ('quopri',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\quopri.py',
-   'PYMODULE'),
-  ('email.errors',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\errors.py',
-   'PYMODULE'),
-  ('csv',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\csv.py',
-   'PYMODULE'),
-  ('tokenize',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\tokenize.py',
-   'PYMODULE'),
-  ('token',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\token.py',
-   'PYMODULE'),
-  ('importlib._bootstrap',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\_bootstrap.py',
-   'PYMODULE'),
-  ('importlib.abc',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\abc.py',
-   'PYMODULE'),
-  ('typing',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\typing.py',
-   'PYMODULE'),
-  ('importlib',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\__init__.py',
    'PYMODULE'),
   ('multiprocessing.process',
    'c:\\users\\liliana '
@@ -420,14 +428,6 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xmlrpc\\__init__.py',
    'PYMODULE'),
-  ('gzip',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\gzip.py',
-   'PYMODULE'),
-  ('_compression',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_compression.py',
-   'PYMODULE'),
   ('xml.parsers.expat',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xml\\parsers\\expat.py',
@@ -451,10 +451,6 @@
   ('urllib.request',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\urllib\\request.py',
-   'PYMODULE'),
-  ('fnmatch',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\fnmatch.py',
    'PYMODULE'),
   ('getpass',
    'c:\\users\\liliana '
@@ -528,6 +524,10 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\contentmanager.py',
    'PYMODULE'),
+  ('email.quoprimime',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\quoprimime.py',
+   'PYMODULE'),
   ('email.headerregistry',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\headerregistry.py',
@@ -544,6 +544,10 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_policybase.py',
    'PYMODULE'),
+  ('quopri',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\quopri.py',
+   'PYMODULE'),
   ('uu',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\uu.py',
@@ -551,18 +555,6 @@
   ('optparse',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\optparse.py',
-   'PYMODULE'),
-  ('decimal',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\decimal.py',
-   'PYMODULE'),
-  ('_pydecimal',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_pydecimal.py',
-   'PYMODULE'),
-  ('numbers',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\numbers.py',
    'PYMODULE'),
   ('multiprocessing',
    'c:\\users\\liliana '
@@ -668,46 +660,6 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\unittest\\util.py',
    'PYMODULE'),
-  ('difflib',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\difflib.py',
-   'PYMODULE'),
-  ('_compat_pickle',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_compat_pickle.py',
-   'PYMODULE'),
-  ('random',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\random.py',
-   'PYMODULE'),
-  ('statistics',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\statistics.py',
-   'PYMODULE'),
-  ('fractions',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\fractions.py',
-   'PYMODULE'),
-  ('socket',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\socket.py',
-   'PYMODULE'),
-  ('shutil',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\shutil.py',
-   'PYMODULE'),
-  ('tarfile',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\tarfile.py',
-   'PYMODULE'),
-  ('lzma',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\lzma.py',
-   'PYMODULE'),
-  ('bz2',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\bz2.py',
-   'PYMODULE'),
   ('pdb',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\pdb.py',
@@ -776,61 +728,61 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\cmd.py',
    'PYMODULE'),
-  ('threading',
+  ('difflib',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\threading.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\difflib.py',
    'PYMODULE'),
-  ('_threading_local',
+  ('_compat_pickle',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_threading_local.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_compat_pickle.py',
    'PYMODULE'),
-  ('datetime',
+  ('bisect',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\datetime.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\bisect.py',
    'PYMODULE'),
-  ('_strptime',
+  ('email._encoded_words',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_strptime.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\_encoded_words.py',
    'PYMODULE'),
-  ('pprint',
+  ('urllib',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\pprint.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\urllib\\__init__.py',
    'PYMODULE'),
-  ('copy',
+  ('email.header',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\copy.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\header.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
+  ('email.base64mime',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\base64mime.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.tags',
+  ('email.charset',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\tags.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\charset.py',
    'PYMODULE'),
-  ('distutils.util',
+  ('email.encoders',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\util.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\encoders.py',
    'PYMODULE'),
-  ('distutils.filelist',
+  ('email.errors',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\filelist.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\email\\errors.py',
    'PYMODULE'),
-  ('distutils.debug',
+  ('csv',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\debug.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\csv.py',
    'PYMODULE'),
-  ('distutils.file_util',
+  ('importlib',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\file_util.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\__init__.py',
    'PYMODULE'),
-  ('distutils.dir_util',
+  ('tokenize',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\dir_util.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\tokenize.py',
    'PYMODULE'),
-  ('py_compile',
+  ('token',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\py_compile.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\token.py',
    'PYMODULE'),
   ('distutils.sysconfig',
    'c:\\users\\liliana '
@@ -884,9 +836,57 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\distutils\\errors.py',
    'PYMODULE'),
+  ('string',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\string.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.version',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.requirements',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._compat',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.specifiers',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.six',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
+   'PYMODULE'),
   ('pkg_resources._vendor.packaging.utils',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.appdirs',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._structures',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.pyparsing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pkg_resources\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('uuid',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\uuid.py',
    'PYMODULE'),
   ('sysconfig',
    'c:\\users\\liliana '
@@ -968,17 +968,17 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\__future__.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('stringprep',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_py_abc.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\stringprep.py',
    'PYMODULE'),
   ('tracemalloc',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('stringprep',
+  ('_py_abc',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\stringprep.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\_py_abc.py',
    'PYMODULE'),
   ('pathlib',
    'c:\\users\\liliana '
@@ -992,13 +992,13 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\__init__.py',
    'PYMODULE'),
-  ('pandas._libs.tslibs',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\_libs\\tslibs\\__init__.py',
-   'PYMODULE'),
   ('pandas._libs.window',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\_libs\\window\\__init__.py',
+   'PYMODULE'),
+  ('pandas._libs.tslibs',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\_libs\\tslibs\\__init__.py',
    'PYMODULE'),
   ('numpy',
    'c:\\users\\liliana '
@@ -1164,13 +1164,49 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor.six',
+  ('setuptools._vendor.packaging.version',
    'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\six.py',
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.__about__',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.ordered_set',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\ordered_set.py',
+   'PYMODULE'),
+  ('setuptools._vendor.six',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\six.py',
+   'PYMODULE'),
+  ('setuptools._vendor.pyparsing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.tags',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.requirements',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
    'PYMODULE'),
   ('setuptools._vendor.packaging.specifiers',
    'c:\\users\\liliana '
@@ -1180,45 +1216,9 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging.tags',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\tags.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.utils',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.version',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('setuptools._vendor.ordered_set',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\ordered_set.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging._structures',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('setuptools._vendor',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\__init__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.requirements',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
   ('setuptools._vendor.packaging.markers',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.__about__',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
-   'PYMODULE'),
-  ('setuptools._vendor.pyparsing',
-   'c:\\users\\liliana '
-   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
    'PYMODULE'),
   ('setuptools.msvc',
    'c:\\users\\liliana '
@@ -2228,6 +2228,718 @@
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\io\\excel\\_openpyxl.py',
    'PYMODULE'),
+  ('openpyxl.cell.cell',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\cell\\cell.py',
+   'PYMODULE'),
+  ('openpyxl.cell',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\cell\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.cell.read_only',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\cell\\read_only.py',
+   'PYMODULE'),
+  ('openpyxl.utils.datetime',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\datetime.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.hyperlink',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\hyperlink.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors.excel',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\excel.py',
+   'PYMODULE'),
+  ('openpyxl.xml.functions',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\xml\\functions.py',
+   'PYMODULE'),
+  ('openpyxl.xml',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\xml\\__init__.py',
+   'PYMODULE'),
+  ('et_xmlfile.xmlfile',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\et_xmlfile\\xmlfile.py',
+   'PYMODULE'),
+  ('et_xmlfile',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\et_xmlfile\\__init__.py',
+   'PYMODULE'),
+  ('xml.etree.ElementTree',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xml\\etree\\ElementTree.py',
+   'PYMODULE'),
+  ('xml.etree.cElementTree',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xml\\etree\\cElementTree.py',
+   'PYMODULE'),
+  ('xml.etree.ElementInclude',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xml\\etree\\ElementInclude.py',
+   'PYMODULE'),
+  ('xml.etree.ElementPath',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xml\\etree\\ElementPath.py',
+   'PYMODULE'),
+  ('xml.etree',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\xml\\etree\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.xml.constants',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\xml\\constants.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors.sequence',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\sequence.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors.namespace',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\namespace.py',
+   'PYMODULE'),
+  ('openpyxl.utils.indexed_list',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\indexed_list.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors.base',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\base.py',
+   'PYMODULE'),
+  ('openpyxl.styles.styleable',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\styleable.py',
+   'PYMODULE'),
+  ('openpyxl.styles.builtins',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\builtins.py',
+   'PYMODULE'),
+  ('openpyxl.styles.named_styles',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\named_styles.py',
+   'PYMODULE'),
+  ('openpyxl.styles.protection',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\protection.py',
+   'PYMODULE'),
+  ('openpyxl.styles.alignment',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\alignment.py',
+   'PYMODULE'),
+  ('openpyxl.styles.borders',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\borders.py',
+   'PYMODULE'),
+  ('openpyxl.styles.colors',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\colors.py',
+   'PYMODULE'),
+  ('openpyxl.styles.fonts',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\fonts.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors.nested',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\nested.py',
+   'PYMODULE'),
+  ('openpyxl.styles.fills',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\fills.py',
+   'PYMODULE'),
+  ('openpyxl.styles.cell_style',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\cell_style.py',
+   'PYMODULE'),
+  ('openpyxl.styles.proxy',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\proxy.py',
+   'PYMODULE'),
+  ('openpyxl.styles.numbers',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\numbers.py',
+   'PYMODULE'),
+  ('openpyxl.utils',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.utils.formulas',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\formulas.py',
+   'PYMODULE'),
+  ('openpyxl.utils.cell',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\cell.py',
+   'PYMODULE'),
+  ('openpyxl.utils.exceptions',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\exceptions.py',
+   'PYMODULE'),
+  ('openpyxl.compat',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\compat\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.compat.strings',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\compat\\strings.py',
+   'PYMODULE'),
+  ('openpyxl.compat.numbers',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\compat\\numbers.py',
+   'PYMODULE'),
+  ('openpyxl.styles',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl._constants',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\_constants.py',
+   'PYMODULE'),
+  ('openpyxl.reader.excel',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\reader\\excel.py',
+   'PYMODULE'),
+  ('openpyxl.reader',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\reader\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.reader.drawings',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\reader\\drawings.py',
+   'PYMODULE'),
+  ('openpyxl.chart.reader',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\reader.py',
+   'PYMODULE'),
+  ('openpyxl.chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.chart.reference',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\reference.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.worksheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\worksheet.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.scenario',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\scenario.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.pagebreak',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\pagebreak.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.properties',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\properties.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.merge',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\merge.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.cell_range',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\cell_range.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.views',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\views.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.filters',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\filters.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.protection',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\protection.py',
+   'PYMODULE'),
+  ('openpyxl.utils.protection',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\protection.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.dimensions',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\dimensions.py',
+   'PYMODULE'),
+  ('openpyxl.utils.bound_dictionary',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\bound_dictionary.py',
+   'PYMODULE'),
+  ('openpyxl.utils.units',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\units.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.page',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\page.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.datavalidation',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\datavalidation.py',
+   'PYMODULE'),
+  ('openpyxl.formula.translate',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\formula\\translate.py',
+   'PYMODULE'),
+  ('openpyxl.formula',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\formula\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.formula.tokenizer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\formula\\tokenizer.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.defined_name',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\defined_name.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.child',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\child.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.header_footer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\header_footer.py',
+   'PYMODULE'),
+  ('openpyxl.utils.escape',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\utils\\escape.py',
+   'PYMODULE'),
+  ('openpyxl.formatting.formatting',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\formatting\\formatting.py',
+   'PYMODULE'),
+  ('openpyxl.formatting',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\formatting\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.formatting.rule',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\formatting\\rule.py',
+   'PYMODULE'),
+  ('openpyxl.styles.differential',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\differential.py',
+   'PYMODULE'),
+  ('openpyxl.chart.series_factory',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\series_factory.py',
+   'PYMODULE'),
+  ('openpyxl.chart.series',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\series.py',
+   'PYMODULE'),
+  ('openpyxl.chart.trendline',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\trendline.py',
+   'PYMODULE'),
+  ('openpyxl.chart.layout',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\layout.py',
+   'PYMODULE'),
+  ('openpyxl.chart.text',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\text.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.text',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\text.py',
+   'PYMODULE'),
+  ('openpyxl.drawing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.drawing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\drawing.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.geometry',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\geometry.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.line',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\line.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.fill',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\fill.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.effect',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\effect.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.colors',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\colors.py',
+   'PYMODULE'),
+  ('openpyxl.chart.marker',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\marker.py',
+   'PYMODULE'),
+  ('openpyxl.chart.picture',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\picture.py',
+   'PYMODULE'),
+  ('openpyxl.chart.label',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\label.py',
+   'PYMODULE'),
+  ('openpyxl.chart.error_bar',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\error_bar.py',
+   'PYMODULE'),
+  ('openpyxl.chart.shapes',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\shapes.py',
+   'PYMODULE'),
+  ('openpyxl.chart.data_source',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\data_source.py',
+   'PYMODULE'),
+  ('openpyxl.chart.surface_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\surface_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.axis',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\axis.py',
+   'PYMODULE'),
+  ('openpyxl.chart.title',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\title.py',
+   'PYMODULE'),
+  ('openpyxl.chart.descriptors',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\descriptors.py',
+   'PYMODULE'),
+  ('openpyxl.chart._3d',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\_3d.py',
+   'PYMODULE'),
+  ('openpyxl.chart._chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.legend',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\legend.py',
+   'PYMODULE'),
+  ('openpyxl.chart.stock_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\stock_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.updown_bars',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\updown_bars.py',
+   'PYMODULE'),
+  ('openpyxl.chart.scatter_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\scatter_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.radar_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\radar_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.pie_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\pie_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.line_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\line_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.bubble_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\bubble_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.bar_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\bar_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.area_chart',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\area_chart.py',
+   'PYMODULE'),
+  ('openpyxl.chart.chartspace',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\chartspace.py',
+   'PYMODULE'),
+  ('openpyxl.chart.print_settings',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\print_settings.py',
+   'PYMODULE'),
+  ('openpyxl.chart.pivot',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\pivot.py',
+   'PYMODULE'),
+  ('openpyxl.chart.plotarea',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chart\\plotarea.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.image',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\image.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.spreadsheet_drawing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\spreadsheet_drawing.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.relation',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\relation.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.picture',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\picture.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.properties',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\properties.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.graphic',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\graphic.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.connector',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\connector.py',
+   'PYMODULE'),
+  ('openpyxl.drawing.xdr',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\drawing\\xdr.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.table',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\table.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.related',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\related.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.chartsheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\chartsheet.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.publish',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\publish.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.custom',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\custom.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.views',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\views.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.protection',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\protection.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.properties',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\properties.py',
+   'PYMODULE'),
+  ('openpyxl.chartsheet.relation',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\chartsheet\\relation.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.drawing',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\drawing.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet._reader',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\_reader.py',
+   'PYMODULE'),
+  ('openpyxl.cell.text',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\cell\\text.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet._read_only',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\_read_only.py',
+   'PYMODULE'),
+  ('openpyxl.packaging.relationship',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\packaging\\relationship.py',
+   'PYMODULE'),
+  ('openpyxl.packaging',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.packaging.manifest',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\packaging\\manifest.py',
+   'PYMODULE'),
+  ('openpyxl.packaging.core',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\packaging\\core.py',
+   'PYMODULE'),
+  ('openpyxl.styles.stylesheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\stylesheet.py',
+   'PYMODULE'),
+  ('openpyxl.styles.table',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\styles\\table.py',
+   'PYMODULE'),
+  ('openpyxl.reader.workbook',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\reader\\workbook.py',
+   'PYMODULE'),
+  ('openpyxl.pivot.record',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\pivot\\record.py',
+   'PYMODULE'),
+  ('openpyxl.pivot',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\pivot\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.pivot.fields',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\pivot\\fields.py',
+   'PYMODULE'),
+  ('openpyxl.pivot.cache',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\pivot\\cache.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.external_link.external',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\external_link\\external.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.external_link',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\external_link\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.packaging.workbook',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\packaging\\workbook.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.web',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\web.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.views',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\views.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.smart_tags',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\smart_tags.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.protection',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\protection.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.properties',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\properties.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.function_group',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\function_group.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.external_reference',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\external_reference.py',
+   'PYMODULE'),
+  ('openpyxl.reader.strings',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\reader\\strings.py',
+   'PYMODULE'),
+  ('openpyxl.comments.comment_sheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\comments\\comment_sheet.py',
+   'PYMODULE'),
+  ('openpyxl.comments',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\comments\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.comments.shape_writer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\comments\\shape_writer.py',
+   'PYMODULE'),
+  ('openpyxl.comments.comments',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\comments\\comments.py',
+   'PYMODULE'),
+  ('openpyxl.comments.author',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\comments\\author.py',
+   'PYMODULE'),
+  ('openpyxl.pivot.table',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\pivot\\table.py',
+   'PYMODULE'),
+  ('openpyxl.workbook',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.workbook.workbook',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\workbook.py',
+   'PYMODULE'),
+  ('openpyxl.writer.excel',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\writer\\excel.py',
+   'PYMODULE'),
+  ('openpyxl.writer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\writer\\__init__.py',
+   'PYMODULE'),
+  ('openpyxl.writer.theme',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\writer\\theme.py',
+   'PYMODULE'),
+  ('openpyxl.workbook._writer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\workbook\\_writer.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet._writer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\_writer.py',
+   'PYMODULE'),
+  ('openpyxl.cell._writer',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\cell\\_writer.py',
+   'PYMODULE'),
+  ('openpyxl.packaging.extended',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\packaging\\extended.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet.copier',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\copier.py',
+   'PYMODULE'),
+  ('openpyxl.worksheet._write_only',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\worksheet\\_write_only.py',
+   'PYMODULE'),
+  ('openpyxl.descriptors.serialisable',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\openpyxl\\descriptors\\serialisable.py',
+   'PYMODULE'),
   ('pandas.io.excel._odswriter',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\io\\excel\\_odswriter.py',
@@ -2235,6 +2947,46 @@
   ('pandas.io.excel._base',
    'c:\\users\\liliana '
    'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\pandas\\io\\excel\\_base.py',
+   'PYMODULE'),
+  ('xlrd',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\__init__.py',
+   'PYMODULE'),
+  ('xlrd.xldate',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\xldate.py',
+   'PYMODULE'),
+  ('xlrd.info',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\info.py',
+   'PYMODULE'),
+  ('xlrd.formula',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\formula.py',
+   'PYMODULE'),
+  ('xlrd.book',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\book.py',
+   'PYMODULE'),
+  ('xlrd.sheet',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\sheet.py',
+   'PYMODULE'),
+  ('xlrd.formatting',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\formatting.py',
+   'PYMODULE'),
+  ('xlrd.compdoc',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\compdoc.py',
+   'PYMODULE'),
+  ('xlrd.biffh',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\biffh.py',
+   'PYMODULE'),
+  ('xlrd.timemachine',
+   'c:\\users\\liliana '
+   'ramalho\\appdata\\local\\programs\\python\\python39\\lib\\site-packages\\xlrd\\timemachine.py',
    'PYMODULE'),
   ('pandas.io.excel._xlrd',
    'c:\\users\\liliana '

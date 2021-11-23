@@ -1,86 +1,88 @@
 acabamento,tipo
-2D1,Printing
-2D2,Printing
-2D3,Printing
-2TE,Printing
-2TF,Printing
-2TG,Printing
-2TH,Printing
-PPA,Printing
-2P1,Printing
-2P2,Printing
-2P3,Printing
-2P4,Printing
-2P5,Printing
-2P8,Printing
-2P9,Printing
-2PA,Printing
-2PC,Printing
-2SB,Printing
-2SD,Printing
-2SE,Printing
-2SK,Printing
-2SP,Printing
-2T1,Printing
-2T2,Printing
-2T3,Printing
-2T4,Manual
-2T5,Printing
-2T8,Printing
-2T9,Printing
-2TA,Printing
-3T1,Printing
-3T2,Printing
-3T3,Printing
-CFK,Printing
-CRK,Printing
-P1P,Printing
-P2P,Printing
-P3M,Printing
-P9M,Printing
-PA1,Printing
-PA2,Printing
-PAA,Printing
-PAK,Printing
-PAL,Printing
-PBC,Printing
-PC1,Printing
-PC2,Printing
-PCM,Printing
-PCR,Printing
-PDC,Printing
-PEK,Printing
-PFM,Printing
-PFP,Printing
-PFR,Printing
-PGK,Printing
-PKA,Printing
-PKK,Printing
-PM1,Printing
-PM2,Printing
-PMC,Printing
-PMH,Printing
-PNC,Printing
-PNL,Printing
-PNR,Printing
-POT,Printing
-PR1,Printing
-PR2,Manual
-PR3,Manual
-PSH,Printing
-PSP,Printing
-PT1,Printing
-PT2,Printing
-PTF,Printing
-PTH,Printing
-PTS,Printing
-PU1,Printing
-PU2,Printing
-PUK,Printing
-PV1,Printing
-PV2,Printing
-PWB,Printing
-PWI,Printing
-PXK,Printing
-PXX,Printing
+2D1,Printing + Manual
+2D2,Printing + Manual
+2D3,Printing + Manual
+2TE,Printing + Manual
+2TF,Printing + Manual
+2TG,Printing + Manual
+2TH,Printing + Manual
+PPA,Printing + Manual
+2P1,Printing + Manual
+2P2,Printing + Manual
+2P3,Printing + Manual
+2P4,Printing + Manual
+2P5,Printing + Manual
+2P8,Printing + Manual
+2P9,Printing + Manual
+2PA,Printing + Manual
+2PC,Printing + Manual
+2SB,Printing + Manual
+2SD,Printing + Manual
+2SE,Printing + Manual
+2SK,Printing + Manual
+2SP,Printing + Manual
+2T1,Printing + Manual
+2T2,Printing + Manual
+2T3,Printing + Manual
+2T4,Printing + Manual
+2T5,Printing + Manual
+2T8,Printing + Manual
+2T9,Printing + Manual
+2TA,Printing + Manual
+3T1,Printing + Manual
+3T2,Printing + Manual
+3T3,Printing + Manual
+CFK,Printing + Manual
+CRK,Printing + Manual
+P1P,Printing + Manual
+P2P,Printing + Manual
+P3M,Printing + Manual
+P9M,Printing + Manual
+PA1,Printing + Manual
+PA2,Printing + Manual
+PAA,Printing + Manual
+PAK,Printing + Manual
+PAL,Printing + Manual
+PBC,Printing + Manual
+PC1,Printing + Manual
+PC2,Printing + Manual
+PCM,Printing + Manual
+PCR,Printing + Manual
+PDC,Printing + Manual
+PEK,Printing + Manual
+PFM,Printing + Manual
+PFP,Printing + Manual
+PFR,Printing + Manual
+PGK,Printing + Manual
+PKA,Printing + Manual
+PKK,Printing + Manual
+PM1,Printing + Manual
+PM2,Printing + Manual
+PMC,Printing + Manual
+PMH,Printing + Manual
+PNC,Printing + Manual
+PNL,Printing + Manual
+PNR,Printing + Manual
+POT,Printing + Manual
+PR1,Printing + Manual
+PR2,Printing + Manual
+PR3,Printing + Manual
+PSH,Printing + Manual
+PSP,Printing + Manual
+PT1,Printing + Manual
+PT2,Printing + Manual
+PTF,Printing + Manual
+PTH,Printing + Manual
+PTS,Printing + Manual
+PU1,Printing + Manual
+PU2,Printing + Manual
+PUK,Printing + Manual
+PV1,Printing + Manual
+PV2,Printing + Manual
+PWB,Printing + Manual
+PWI,Printing + Manual
+PXK,Printing + Manual
+PXX,Printing + Manual
 E01,E01
+CCSBALJT,Outros
+CCSEMBME,PL

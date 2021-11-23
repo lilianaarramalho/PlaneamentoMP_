@@ -34,8 +34,8 @@ grupo_1=ttk.LabelFrame(root,text='Calcular data')
 
 
 var=IntVar()
-rb_Method0=ttk.Radiobutton(grupo_1,text='Incluir OVs nao planeadas',variable=var,value=0)
-rb_Method1=ttk.Radiobutton(grupo_1,text='Incluir todas as OVs',variable=var,value=1)
+rb_Method0=ttk.Radiobutton(grupo_1,text='Gerar resultados',variable=var,value=0)
+rb_Method1=ttk.Radiobutton(grupo_1,text='Gerar cumprimento do plano',variable=var,value=1)
 var.set(0)
 
 btn_run=ttk.Button(grupo_1,text="Correr",command=lambda: runmain())
@@ -52,6 +52,9 @@ for col in range(col_count):
 
 for row in range(row_count):
     root.grid_rowconfigure(row, weight=1)
+
+if var==0:
+    print('debug')
 
 root.mainloop()
 

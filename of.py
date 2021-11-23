@@ -29,9 +29,15 @@ class of(object):
         self.planeador=planeador
         self.descritivo_ct=descritivo_ct
         self.cod_material=descricao_material.split(' ')[2].split('/')[0]
+        try:
+            self.acabamento = descricao_material.split('/')[1].split(' ')[0]
+        except:
+            self.acabamento = ""
         self.dim1=descricao_material.split(' ')[3].split('X')[0]
         self.plyup=0
         self.calandrado=0
+        self.is_c=0
+        self.tinta=-1
 
         if "X" in descricao_material:
             self.dim2 = descricao_material.split('X')[1].split(' ')[0]
