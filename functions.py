@@ -68,7 +68,9 @@ def ler_ocupacao_aglomerados():
     last_week = date(datetime.datetime.today().year , 12, 28)
     n_weeks=last_week.isocalendar()[1]-semana_inicio_plano
 
-    df_ofs['semana'] = df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1]-semana_inicio_plano if x.isocalendar()[0]==datetime.datetime.today().year else n_weeks+x.isocalendar()[1] )
+    df_ofs['semana_atual']=df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1])
+    df_ofs['semana'] = df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1]-semana_inicio_plano if x.isocalendar()[0]==datetime.datetime.today().year else n_weeks+x.isocalendar()[1])
+    df_ofs=df_ofs.sort_values(by=['semana_atual'],ascending=True)
     df_ofs=df_ofs[df_ofs['semana']>=0]
     materiais=df_ofs['Material de produção'].tolist()
     semana=df_ofs['semana'].tolist() #VERIFICAR
@@ -371,7 +373,7 @@ def importar_cts(caminho,df_blocos,df_virados,df_clientes,cts,area,method):
                     posicao_virados = ct_virados.index(cts_nomes[index])
                     capacidade_vir = capacidade_virados[posicao_virados]
 
-                for index_semana in range(semana_inicio_plano-2,53):
+                for index_semana in range(semana_inicio_plano,53):
 
                     n_turnos = turnos[index]
 
@@ -395,7 +397,7 @@ def importar_cts(caminho,df_blocos,df_virados,df_clientes,cts,area,method):
 
                     try:
 
-                        new_ct.capacidade[-1]=new_ct.capacidade[-1]-ocupacoes[index_semana][index]*capacidade
+                        new_ct.capacidade[-1]=new_ct.capacidade[-1]-ocupacoes[index_semana-1][index]*capacidade
 
                     except:
                         new_ct.capacidade[-1] = new_ct.capacidade[-1]
@@ -673,12 +675,6 @@ def import_ofs(method):
 
     # criar lista de nomes dos centros de trabalho
 
-    nomes_cts = []
-    for ct in cts:
-        nomes_cts.append(ct.nome)
-
-    df_ofs = df_ofs[df_ofs['Centro de trabalho'].isin(nomes_cts)]
-
     df_ofs['encomendar'] = df_ofs['Descritivo componente'].str.split(' ').str[-1]
 
     df_ofs = df_ofs.sort_values(['Ordem Venda / Transferência', 'Item OV/Transferência', 'Sold to'], ascending=[False, False, False])
@@ -775,6 +771,12 @@ def import_ofs(method):
     df_semana_criacao=df_semana_criacao[['ov','semana_criacao']]
 
     df_ofs=df_ofs.merge(df_semana_criacao,how='inner',on='ov')
+
+    nomes_cts = []
+    for ct in cts:
+        nomes_cts.append(ct.nome)
+
+    df_ofs = df_ofs[df_ofs['Centro de trabalho'].isin(nomes_cts)]
 
     #todo adicionar restrição para restantes metodos
 
@@ -1767,6 +1769,10 @@ def print_output(method):
             # else:
             aglomerado=-1
 
+            semana_precedencia=max_semana_precedencia + semana_inicio_plano
+
+            semana_output = max(ofs[index].id_alocada) + semana_inicio_plano
+
             new_row={'of':ofs[index].cod_of,
                      'item':items[ofs[index].id_items[0]].cod_item,
                      'id ov':items[ofs[index].id_items[0]].id_ov,
@@ -1781,7 +1787,7 @@ def print_output(method):
                      'referência':ofs[index].descricao_material,
                      'semana minima':ofs[index].semana_min+semana_inicio_plano,
                      'duração':ofs[index].duracao,
-                     'semana precedencia':max_semana_precedencia+semana_inicio_plano,
+                     'semana precedencia':semana_precedencia,
                      'número de semanas':ofs[index].n_semanas,
                      'Código Material':ofs[index].codigo_material,
                      'Quantidade Material':ofs[index].quantidade,
@@ -2776,7 +2782,28 @@ def cumprimento_plano(ovs_dict,correr_cumprimento):
     df.to_csv('data/99. cumprimento.csv')
 
 
+def alterar_centro_trabalho_amoltex():
 
+    id_ct_anterior=-1
+    for ct in cts:
+        if ct.nome=='CRMLAMPL' and ct.acabamento=='Total':
+            id_ct_anterior=ct.id
+            break
+
+    id_ct_atual=-1
+    for ct in cts:
+        if ct.nome=='CRMLAMPL' and ct.acabamento=='Printing + Manual':
+            id_ct_atual=ct.id
+            break
+
+    for ov in ovs:
+        if ov.sold_to=="AMOSEALTEX CORK COMPANY LIMITED":
+            id_items=ov.id_items
+            for id_item in id_items:
+                id_ofs=items[id_item].id_ofs
+                for id_of in id_ofs:
+                    if ofs[id_of].id_ct==id_ct_anterior:
+                        ofs[id_of].id_ct=id_ct_atual
 
 
 

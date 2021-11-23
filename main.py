@@ -15,6 +15,8 @@ from operator import itemgetter, attrgetter, methodcaller
 
 lista_verdes,lista_azuis=ler_tintas_alocadas()
 
+alterar_centro_trabalho_amoltex()
+
 criar_capacidade_rolante()
 
 verificar_referencias_c()
