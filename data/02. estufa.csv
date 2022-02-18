@@ -1,0 +1,49 @@
+PRЩ AQUECIMENTO DE BLOCOS E CILINDROS PARA LAMINAGEM,,,,,,,
+,,,,FCO-1126/6,,,
+PRODUTO,"TEMPERATURA
+КC","TEMPO MINIMO
+(horas)","TEMPO MСXIMO
+(horas)",OBSERVAЧеES,,,
+711G,90  Б5,8,9,,,711G,E
+1028,90  Б5,8,9,,,1028,E
+1029,90  Б5,8,8,,,1029,E
+1047,90  Б5,8,9,,,1047,E
+1049,90  Б5,8,10,,,1049,E
+1164,90  Б5,8,9,,,1164,E
+1176,90  Б5,8,9,,,1176,E
+1177,90  Б5,8,9,,,1177,E
+1302,90  Б5,8,9,,,1302,E
+1505,90  Б5,8,9,,,1505,E
+1515,90  Б5,8,9,,,1515,E
+2030,90  Б5,2,3,,,2030,E
+2052,90  Б5,8,10,,,2052,E
+ACM87,90  Б5,8,9,,,ACM87,E
+ACM89,90  Б5,8,9,,,ACM89,E
+CDM62,90  Б5,4,5,,,CDM62,E
+CDM63,90  Б5,8,9,,,CDM63,E
+CDM71,90  Б5,8,9,,,CDM71,E
+DC113,90  Б5,4,6,,,DC113,E
+DC205,90  Б5,8,9,,,DC205,E
+DVGW,90  Б5,8,9,,,DVGW,E
+H70L,90  Б5,4,6,,,H70L,E
+HC60,90  Б5,4,6,,,HC60,E
+HC70L,90  Б5,8,9,,,HC70L,E
+HC80,90  Б5,8,9,,,HC80,E
+H90L,90  Б5,8,9,,,H90L,E
+NC160,90  Б5,8,9,,,NC160,E
+NC60,90  Б5,8,9,,,NC60,E
+NC710,90  Б5,8,9,,,NC710,E
+NC711,90  Б5,8,9,,,NC711,E
+NC733,90  Б5,8,9,,,NC733,E
+GT33,60  Б5,4,6,Espessuras com tolerancias especiais e caso de estar a fazer pѓ de laminagem.,,GT33,E
+N171,90  Б5,8,9,,,N171,E
+NI71,90  Б5,4,6,,,NI71,E
+RU14,90  Б5,8,10,,,RU14,E
+RU04,90  Б5,8,9,,,RU04,E
+S1120,90  Б5,4,6,Cilindros:espessura acima de 6mm/ Blocos 1280mm x 1040mm,,S1120,E
+S210,90  Б5,8,9,,,S210,E
+S220,90  Б5,8,9,,,S220,E
+S601,90  Б5,8,9,,,S601,E
+WI2,90  Б5,8,9,,,WI2,E
+VC 95,90  Б5,12,15,Os blocos devem ficar sobre uma superficie lisa,,VC 95,E
+,,,,,,S112,E
