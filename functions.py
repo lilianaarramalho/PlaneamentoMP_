@@ -28,12 +28,12 @@ from datetime import date
 
 def verificar_referencias_c():
 
-    df_cs = pd.read_csv('data/20. referencias c.csv', encoding='ISO-8859-1', sep=",")
+    df_cs = pd.read_csv('data/20. referencias c.csv', encoding='ISO-8859-1', sep=",",error_bad_lines=False)
     df_cs['material'] = df_cs['material'].astype(str)
     cs = df_cs['material'].tolist()
 
     # IMPORTAR FATORES DE CONVERSAO
-    df_fi = pd.read_csv('data/23. fatores_conversao.csv', sep=",", encoding="ISO-8859-1")
+    df_fi = pd.read_csv('data/23. fatores_conversao.csv', sep=",", encoding="ISO-8859-1",error_bad_lines=False)
     materiais_fi = df_fi['Material'].tolist()
     componentes_fi = df_fi['Componente'].tolist()
     fi = df_fi['FI'].tolist()
@@ -54,13 +54,13 @@ def find_index(lst, a):
 def ler_ocupacao_aglomerados():
 
     #VER REFERENCIAS C
-    df_cs = pd.read_csv('data/20. referencias c.csv', encoding='ISO-8859-1', sep=",")
+    df_cs = pd.read_csv('data/20. referencias c.csv', encoding='ISO-8859-1', sep=",",error_bad_lines=False)
     df_cs['material'] = df_cs['material'].astype(str)
     cs = df_cs['material'].tolist()
     quantidade_cs= [[0]*53]*len(cs)
 
     #VER OFS PLANEADAS DE EMBALAGEM
-    df_ofs=pd.read_csv('data/08.  ofs.csv',sep=",",encoding='ISO-8859-1')
+    df_ofs=pd.read_csv('data/08.  ofs.csv',sep=",",encoding='ISO-8859-1',error_bad_lines=False)
     df_ofs=df_ofs[(df_ofs['Ordem de produção / planeada']>1600000000)&(df_ofs['Ordem de produção / planeada']<1700000000)]
     df_ofs=df_ofs[df_ofs['Descritivo de Centro de Trabalho'].str.contains('EMB')]
     df_ofs['Data-base do fim'] = pd.to_datetime(df_ofs['Data-base do fim'], format='%d/%m/%Y',
@@ -69,21 +69,24 @@ def ler_ocupacao_aglomerados():
     n_weeks=last_week.isocalendar()[1]-semana_inicio_plano
 
     df_ofs['semana_atual']=df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1])
-    df_ofs['semana'] = df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1]-semana_inicio_plano if x.isocalendar()[0]==datetime.datetime.today().year else n_weeks+x.isocalendar()[1])
+    #df_ofs['semana'] = df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1]-semana_inicio_plano if x.isocalendar()[0]==datetime.datetime.today().year else n_weeks+x.isocalendar()[1])
+    df_ofs['semana'] = df_ofs['Data-base do fim'].apply(lambda x: x.isocalendar()[1]-semana_inicio_plano )
     df_ofs=df_ofs.sort_values(by=['semana_atual'],ascending=True)
     df_ofs=df_ofs[df_ofs['semana']>=0]
+    ofs=df_ofs['Ordem de produção / planeada'].tolist()
+    descricao=df_ofs['Texto breve de material'].tolist()
     materiais=df_ofs['Material de produção'].tolist()
     semana=df_ofs['semana'].tolist() #VERIFICAR
     quantidade=df_ofs['Quantidade total da ordem'].tolist()
 
     #IMPORTAR FATORES DE CONVERSAO
-    df_fi=pd.read_csv('data/23. fatores_conversao.csv',sep=",",encoding="ISO-8859-1")
+    df_fi=pd.read_csv('data/23. fatores_conversao.csv',sep=",",encoding="ISO-8859-1",error_bad_lines=False)
     materiais_fi=df_fi['Material'].tolist()
     componentes_fi=df_fi['Componente'].tolist()
     fi=df_fi['FI'].tolist()
 
     #IMPORTAR CADENCIAS
-    df_bom=pd.read_csv('data/19. BOM.csv',sep=",",encoding="ISO-8859-1")
+    df_bom=pd.read_csv('data/19. BOM.csv',sep=",",encoding="ISO-8859-1",error_bad_lines=False)
     df_bom=df_bom[df_bom['VP']==1]
     df_bom=df_bom[['Material','Cadência máquina','Centro trabalho','Descrição Operação']]
     df_bom=df_bom.dropna()
@@ -92,6 +95,8 @@ def ler_ocupacao_aglomerados():
     cadencias_bom=df_bom['Cadência máquina'].tolist()
     ct_bom=df_bom['Centro trabalho'].tolist()
     descritivo_operacao_bom=df_bom['Descrição Operação'].tolist()
+
+    test=[]
 
     for index1 in range(len(materiais)):
         material=materiais[index1]
@@ -117,8 +122,12 @@ def ler_ocupacao_aglomerados():
                     for ct in cts:
                         if ct.nome==centro_de_trabalho:
                             duracao_agl=quantidade[index1]*float(fi[index2])/cadencia*60
+                            new_row={'of':ofs[index1],'descricao':descricao[index1],'semana':semana[index1]+semana_inicio_plano,'ct':ct.nome,'quantidade agl':duracao_agl}
+                            test.append(new_row)
                             ct.capacidade[semana[index1]]=ct.capacidade[semana[index1]]-duracao_agl
 
+    df_teste=pd.DataFrame(test)
+    df_teste.to_csv('data/test.csv',encoding='ISO-8859-1')
     output=[]
     for index in range(len(quantidade_cs)):
         c=quantidade_cs[index]
@@ -193,27 +202,27 @@ def ler_cts_embalagem():
 
     global lista_materials
 
-    df=pd.read_csv('data/17. cts embalagem.csv',encoding='iso-8859-1')
+    df=pd.read_csv('data/17. cts embalagem.csv',encoding='iso-8859-1',error_bad_lines=False)
 
     lista_materials=df['Material'].tolist()
 
     return lista_materials
 
 def atualizar_ficheiros():
-    df1 = pd.read_excel('ACC_Ordens por planear - Kaizen.xlsx')
-    df2 = pd.read_csv('data/14.  ofs after plan.csv')
+    df1 = pd.read_excel('ACC_Ordens por planear - Kaizen.xlsx',error_bad_lines=False)
+    df2 = pd.read_csv('data/14.  ofs after plan.csv',error_bad_lines=False)
     if df1.equals(df2):
         return -1
     elif method == 0:
 
-        read_file = pd.read_excel("ACC_Ordens por planear - Kaizen.xlsx")
-        read_file.to_csv("data/14.  ofs after plan.csv", index=None, header=True, date_format='%d/%m/%Y',encoding='utf-8-sig')
+        read_file = pd.read_excel("ACC_Ordens por planear - Kaizen.xlsx",error_bad_lines=False)
+        read_file.to_csv("data/14.  ofs after plan.csv", index=None, header=True, date_format='%d/%m/%Y',encoding='utf-8-sig',error_bad_lines=False)
 
     else:
 
-        read_file = pd.read_excel("ACC_Ordens por planear - Kaizen.xlsx")
-        read_file.to_csv("data/14.  ofs after plan.csv", index=None, header=True, date_format='%d/%m/%Y')
-        read_file.to_csv("data/08.  ofs.csv", index=None, header=True, date_format='%d/%m/%Y',encoding='utf-8-sig')
+        read_file = pd.read_excel("ACC_Ordens por planear - Kaizen.xlsx",error_bad_lines=False)
+        read_file.to_csv("data/14.  ofs after plan.csv", index=None, header=True, date_format='%d/%m/%Y',error_bad_lines=False)
+        read_file.to_csv("data/08.  ofs.csv", index=None, header=True, date_format='%d/%m/%Y',encoding='utf-8-sig',error_bad_lines=False)
 
     return 0
 
@@ -230,7 +239,7 @@ start=time.time()
 def importar_clientes():
 
     clientes=[]
-    df_clientes=pd.read_csv('data/01. clientes.csv',sep=",",encoding='iso-8859-1')
+    df_clientes=pd.read_csv('data/01. clientes.csv',sep=",",encoding='iso-8859-1',error_bad_lines=False)
     df_clientes['Carga Completa']=df_clientes['Carga Completa'].fillna(1)
     df_clientes['Lead Time Acordado (semanas)'] = df_clientes['Lead Time Acordado (semanas)'].fillna(0)
     df_clientes_total=df_clientes.copy()
@@ -281,9 +290,9 @@ def export_capacidades_in():
 
         vetor_capacidades=cts[index].capacidade_iniciais
 
-        for pos_semana in range(1,len(vetor_capacidades)):
+        for pos_semana in range(0,len(vetor_capacidades)):
 
-            new_row={'area':cts[index].area,'centro de trabalho':cts[index].nome,'acabamento':cts[index].acabamento,'semana':pos_semana+semana_inicio_plano-1,'capacidade':cts[index].capacidade_iniciais[pos_semana],'ocupacao inicial':cts[index].capacidade[pos_semana]}
+            new_row={'area':cts[index].area,'centro de trabalho':cts[index].nome,'acabamento':cts[index].acabamento,'semana':pos_semana+semana_inicio_plano,'capacidade':cts[index].capacidade_iniciais[pos_semana],'ocupacao inicial':cts[index].capacidade[pos_semana]}
             rows.append(new_row)
 
     df_rows=pd.DataFrame(rows)
@@ -301,7 +310,7 @@ def importar_cts(caminho,df_blocos,df_virados,df_clientes,cts,area,method):
 
         df_cnm = pd.read_excel(caminho, sheet_name='Mapa SAP')
 
-    df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1')
+    df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
     tipos_de_acabamento=df_acabamentos['tipo'].tolist()
     acabamentos=set(tipos_de_acabamento)
     acabamentos = (list(acabamentos))
@@ -353,7 +362,8 @@ def importar_cts(caminho,df_blocos,df_virados,df_clientes,cts,area,method):
             capacidade_bl = 9999999999
             capacidade_vir = 9999999999
 
-            if (str(cts_nomes[index]) not in helper or (cts_nomes[index] in helper and areas[index] in acabamentos)) and cts_nomes[index][:3]==area and areas[index]!='Total' and cts_nomes[index]!="CRMEMBPL":
+            if (str(cts_nomes[index]) not in helper or ((cts_nomes[index] in helper and areas[index] in acabamentos)
+            and cts_nomes[index]) != 'CCSBALJT' and cts_nomes[index] != 'CCSEMBME') and cts_nomes[index][:3]==area and areas[index]!='Total' and cts_nomes[index]!="CRMEMBPL":
 
                 if areas[index] in acabamentos:
 
@@ -438,6 +448,149 @@ def importar_cts(caminho,df_blocos,df_virados,df_clientes,cts,area,method):
 
     return cts
 
+def importar_cts_ccs(caminho,df_blocos,df_virados,df_clientes,cts,area,method):
+
+    try:
+
+        #todo adicionar caminho
+
+        df_cnm=pd.read_excel('G:/Operacoes/Logistica/PLANEAMENTO/1. PlaneamentoTOTAL/'+str(caminho),sheet_name='Mapa SAP')
+
+    except:
+
+        df_cnm = pd.read_excel(caminho, sheet_name='Mapa SAP')
+
+    dias_semana=df_cnm.iloc[6:, 2]
+    ocupacoes=df_cnm.iloc[6:,3:].values.tolist()
+    dias_semana.index = np.arange(0, len(dias_semana))
+    centros_trabalho=df_cnm.iloc[1:6,3:].T.dropna()
+    excecoes=df_cnm.iloc[61:,:]
+    excecoes.columns = excecoes.iloc[0]
+    excecoes = excecoes[1:]
+    excecoes.dropna(axis=1)
+    ct_excecao=excecoes['CT'].tolist()
+    cc_excecao=excecoes['CC'].tolist()
+    de_excecao=excecoes['DE'].tolist()
+    ate_excecao=excecoes['ATÉ'].tolist()
+    n_turnos_excecao=excecoes['N.º TURNOS'].tolist()
+
+    areas=centros_trabalho.iloc[:,0].tolist()
+    turnos=centros_trabalho.iloc[:,1].tolist()
+    horas_por_turno=centros_trabalho.iloc[:,2].tolist()
+    oee=centros_trabalho.iloc[:,3].tolist()
+    cts_nomes=centros_trabalho.iloc[:,4].tolist()
+
+    semana_inicio_plano = datetime.datetime.now().isocalendar()[1]
+    if method == 0:
+        semana_inicio_plano = semana_inicio_plano + 1
+    else:
+        semana_inicio_plano = semana_inicio_plano + 4
+
+    ct_blocos = df_blocos['ct'].tolist()
+    capacidade_blocos = df_blocos['blocos semana'].tolist()
+
+    ct_virados = df_virados['ct'].tolist()
+    capacidade_virados = df_virados['blocos semana'].tolist()
+
+    ct_clientes = df_clientes['ct'].tolist()
+    grupo_cliente = df_clientes['cliente'].tolist()
+    capacidade_cliente = df_clientes['capacidade'].tolist()
+
+    counter=len(cts)
+    helper=[]
+
+    with tqdm(total=len(cts_nomes)) as pbar:
+
+        for index in range(len(cts_nomes)):
+
+            capacidade_bl = 9999999999
+            capacidade_vir = 9999999999
+
+            if str(cts_nomes[index]) and cts_nomes[index][:3]==area:
+
+                if cts_nomes[index]=="CCSBALJT" or cts_nomes[index]=="CCSEMBME":
+
+                    new_ct = ct(counter,cts_nomes[index],areas[index],area)
+
+                else:
+
+                    new_ct = ct(counter, cts_nomes[index], "Total", area)
+
+                cts.append(new_ct)
+
+                if cts_nomes[index] in ct_blocos:
+                    posicao_blocos = ct_blocos.index(cts_nomes[index])
+                    capacidade_bl = capacidade_blocos[posicao_blocos]
+
+                if cts_nomes[index] in ct_virados:
+                    posicao_virados = ct_virados.index(cts_nomes[index])
+                    capacidade_vir = capacidade_virados[posicao_virados]
+
+                for index_semana in range(semana_inicio_plano,53):
+
+                    n_turnos = turnos[index]
+
+                    for index_excecao in range(len(ct_excecao)):
+                        if ct_excecao[index_excecao] == cts_nomes[index] and cc_excecao[index_excecao] == areas[
+                            index] and index_semana >= de_excecao[index_excecao] and index_semana <= ate_excecao[
+                            index_excecao]:
+                            n_turnos = n_turnos_excecao[index_excecao]
+                            break
+
+                    try:
+                        capacidade = int(dias_semana[index_semana-1]) * n_turnos * oee[index] * 60 * horas_por_turno[
+                            index]
+                    except:
+                        capacidade = 0
+
+                    new_ct.capacidade.append(capacidade)
+                    new_ct.capacidade_virados.append(capacidade_vir)
+                    new_ct.capacidade_blocos.append(capacidade_bl)
+                    new_ct.capacidade_iniciais.append(capacidade)
+
+                    try:
+
+                        new_ct.capacidade[-1]=new_ct.capacidade[-1]-ocupacoes[index_semana-1][index]*capacidade
+
+                    except:
+                        new_ct.capacidade[-1] = new_ct.capacidade[-1]
+
+
+                for posicao in range(len(clientes)):
+                    capacidade_cliente_atual = [0]*len(new_ct.capacidade_iniciais)
+                    new_ct.capacidade_clientes.append(capacidade_cliente_atual)
+                    new_ct.capacidade_iniciais_clientes.append(capacidade_cliente_atual)
+
+                if cts_nomes[index] in ct_clientes:
+
+                    posicao_clientes=find(ct_clientes,cts_nomes[index])
+
+                    for id_posicao in range(len(posicao_clientes)):
+
+                        posicao=posicao_clientes[id_posicao]
+
+                        grupo_tofind=grupo_cliente[posicao]
+                        capacidade=capacidade_cliente[posicao]
+
+                        for id_cliente in range(len(clientes)):
+
+                            if clientes[id_cliente].nome==grupo_tofind:
+
+                                capacidade_cliente_atual = [i * capacidade for i in new_ct.capacidade_iniciais]
+
+                                new_ct.capacidade_clientes[id_cliente]=capacidade_cliente_atual
+                                new_ct.capacidade_iniciais_clientes[id_cliente] = capacidade_cliente_atual
+
+                counter+=1
+
+                helper.append(str(cts_nomes[index])+str(areas[index]))
+
+            pbar.update(1)
+
+        pbar.close()
+
+    return cts
+
 def adicionar_capacidade_cts(caminho,cts,area,method):
 
     try:
@@ -450,7 +603,7 @@ def adicionar_capacidade_cts(caminho,cts,area,method):
 
         df_cnm = pd.read_excel(caminho, sheet_name='Mapa SAP')
 
-    df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1')
+    df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
     tipos_de_acabamento=df_acabamentos['tipo'].tolist()
     acabamentos=set(tipos_de_acabamento)
     acabamentos = (list(acabamentos))
@@ -503,7 +656,7 @@ def adicionar_capacidade_cts(caminho,cts,area,method):
 
                 ids_used.append(id_ct)
 
-                for index_semana in range(1,53):
+                for index_semana in range(0,53):
 
                     n_turnos = turnos[index]
 
@@ -515,7 +668,7 @@ def adicionar_capacidade_cts(caminho,cts,area,method):
                             break
 
                     try:
-                        capacidade = int(dias_semana[index_semana-1]) * n_turnos * oee[index] * 60 * horas_por_turno[
+                        capacidade = int(dias_semana[index_semana]) * n_turnos * oee[index] * 60 * horas_por_turno[
                             index]
                     except:
                         capacidade = 0
@@ -578,14 +731,12 @@ if method == 0:
 else:
     semana_inicio_plano = semana_inicio_plano + 4
 
-df_blocos = pd.read_csv('data/04. restricoes blocos.csv', sep=",", encoding="iso-8859-1")
-df_virados = pd.read_csv('data/05. restricoes virados.csv', sep=",", encoding="iso-8859-1")
-df_clientes = pd.read_csv('data/06. restricoes clientes.csv', sep=",", encoding='iso-8859-1')
-cts=importar_cts('CNM_Planeamento_SAP_2021.xlsx',df_blocos,df_virados,df_clientes,cts,"CNM",method)
-cts=importar_cts('CRM_Planeamento_SAP_2021.xlsx',df_blocos,df_virados,df_clientes,cts,"CRM",method)
-cts=importar_cts('CCS_Planeamento_SAP_2021.xlsx',df_blocos,df_virados,df_clientes,cts,"CCS",method)
-cts=adicionar_capacidade_cts('CNM_Planeamento_SAP_2022.xlsx',cts,"CNM",method)
-cts=adicionar_capacidade_cts('CRM_Planeamento_SAP_2022.xlsx',cts,"CRM",method)
+df_blocos = pd.read_csv('data/04. restricoes blocos.csv', sep=",", encoding="iso-8859-1",error_bad_lines=False)
+df_virados = pd.read_csv('data/05. restricoes virados.csv', sep=",", encoding="iso-8859-1",error_bad_lines=False)
+df_clientes = pd.read_csv('data/06. restricoes clientes.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
+cts=importar_cts('CNM_Planeamento_SAP_2022.xlsx',df_blocos,df_virados,df_clientes,cts,"CNM",method)
+cts=importar_cts('CRM_Planeamento_SAP_2022.xlsx',df_blocos,df_virados,df_clientes,cts,"CRM",method)
+cts=importar_cts_ccs('CCS_Planeamento_SAP_2022.xlsx',df_blocos,df_virados,df_clientes,cts,"CCS",method)
 
 export_capacidades_in()
 
@@ -605,7 +756,7 @@ def print_capacidades():
 def read_arguments():
     global correr_cumprimento
 
-    arguments=pd.read_csv('data/arguments.csv')
+    arguments=pd.read_csv('data/arguments.csv',error_bad_lines=False)
 
     cumprimento=arguments['correr_plano'].tolist()[0]
 
@@ -851,7 +1002,7 @@ def import_ofs(method):
         items.append(new_item)
 
     df_ofs_unicas = df_ofs.drop_duplicates(['Ordem de produção / planeada'])
-    df_cs=pd.read_csv('data/21. total ref c.csv',sep=",",encoding='ISO-8859-1')
+    df_cs=pd.read_csv('data/21. total ref c.csv',sep=",",encoding='ISO-8859-1',error_bad_lines=False)
     df_cs['codigo material']=df_cs['codigo material'].astype(str)
     materiais_c=df_cs['codigo material'].tolist()
 
@@ -867,7 +1018,7 @@ def import_ofs(method):
     data_desejada = df_ofs['semana'].tolist()
     lista_items=df_ofs['item'].tolist()
     lista_ovs=df_ofs['ov'].tolist()
-    df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1')
+    df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
     lista_descricao_acabamento=df_acabamentos['acabamento'].tolist()
     lista_tipo_acabamento=df_acabamentos['tipo'].tolist()
     lista_cts=df_ofs['Centro de trabalho'].tolist()
@@ -877,7 +1028,7 @@ def import_ofs(method):
     planeadores=df_ofs['Nome planejador'].tolist()
     descritivos_ct=df_ofs['Descritivo de Centro de Trabalho'].tolist()
 
-    df_estufa = pd.read_csv('data/02. estufa.csv', skiprows=2, encoding='iso-8859-1')
+    df_estufa = pd.read_csv('data/02. estufa.csv', skiprows=2, encoding='iso-8859-1',error_bad_lines=False)
     df_estufa['material'] = df_estufa['PRODUTO']
 
     df_estufa['TEMPO MINIMO\n(horas)'] = df_estufa['TEMPO MINIMO\n(horas)'].astype(float).fillna(0.0)
@@ -886,7 +1037,7 @@ def import_ofs(method):
     estufa_material = df_estufa['material'].tolist()
     estufa_tempo = df_estufa['duracao_mins'].tolist()
 
-    df=pd.read_csv('data/24. tintas.csv',sep=",",encoding="ISO-8859-1")
+    df=pd.read_csv('data/24. tintas.csv',sep=",",encoding="ISO-8859-1",error_bad_lines=False)
     df_verde=df[df['Revestimento']=="Tinta verde"]
     df_azul = df[df['Revestimento'] == "Tinta azul"]
 
@@ -957,6 +1108,23 @@ def import_ofs(method):
                     if cts[pos_ct].nome == lista_cts[index] and cts[pos_ct].acabamento == acabamento:
                         id_ct = pos_ct
                         break
+                    elif cts[pos_ct].nome==lista_cts[index] and lista_cts[index]=="CCSEMBME":
+                        if descricoes_material[index].split(" ")[0]=="PL" and cts[pos_ct].acabamento=="Embalagem Placas":
+                            id_ct = pos_ct
+                            break
+                        elif descricoes_material[index].split(" ")[0]=="MB" and cts[pos_ct].acabamento=="Embalagem Memos":
+                            id_ct = pos_ct
+                            break
+                        elif (descricoes_material[index].split(" ")[0]!="MB" and descricoes_material[index].split(" ")[0]!="PL" ) and cts[pos_ct].acabamento=="Memoboards Diversos  (H691)":
+                            id_ct = pos_ct
+                            break
+                    elif cts[pos_ct].nome==lista_cts[index] and lista_cts[index]=="CCSBALJT":
+                        if descricoes_material[index].split(" ")[0]=="JT" and cts[pos_ct].acabamento=="Juntas":
+                            id_ct = pos_ct
+                            break
+                        elif descricoes_material[index].split(" ")[0]!="JT" and cts[pos_ct].acabamento=="Outros":
+                            id_ct = pos_ct
+                            break
 
                 if id_ct!=-1:
 
@@ -1025,7 +1193,7 @@ def import_bom():
     global lista_calandrados
     global lista_plyups
 
-    df_bom=pd.read_csv('data/19. BOM.csv',encoding='iso-8859-1')
+    df_bom=pd.read_csv('data/19. BOM.csv',encoding='iso-8859-1',error_bad_lines=False)
 
     df_calandrados=df_bom[(df_bom['Descrição Operação'].str.contains("CALANDRADOS")) & (df_bom['Centro trabalho'].str[:3]=='CRM')]
     df_plyups = df_bom[(df_bom['Descrição Operação'].str.contains("PLY-UP")) & (df_bom['Centro trabalho'].str[:3] == 'CRM')]
@@ -1055,7 +1223,7 @@ def import_bom():
     return lista_calandrados,lista_plyups
 
 def atualizar_capacidades(method):
-    df_estufa = pd.read_csv('data/02. estufa.csv', skiprows=2, encoding='iso-8859-1')
+    df_estufa = pd.read_csv('data/02. estufa.csv', skiprows=2, encoding='iso-8859-1',error_bad_lines=False)
     df_estufa['material'] = df_estufa['PRODUTO']
 
     df_estufa['TEMPO MINIMO\n(horas)'] = df_estufa['TEMPO MINIMO\n(horas)'].astype(float).fillna(0.0)
@@ -1066,8 +1234,8 @@ def atualizar_capacidades(method):
 
     if method==0 or method==1:
 
-        df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='iso-8859-1')
-        df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1')
+        df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
+        df_acabamentos = pd.read_csv('data/07.  acabamentos.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
         lista_descricao_acabamento = df_acabamentos['acabamento'].tolist()
         lista_tipo_acabamento = df_acabamentos['tipo'].tolist()
 
@@ -1408,7 +1576,7 @@ def verificar_capacidades(id_of,int_semana,id_ov,capacidade_max,duracao,lista_ve
 
 def ler_tintas_alocadas():
 
-    df=pd.read_csv('data/08.  ofs.csv',sep=",",encoding="ISO-8859-1")
+    df=pd.read_csv('data/08.  ofs.csv',sep=",",encoding="ISO-8859-1",error_bad_lines=False)
 
     df=df[(df['Ordem de produção / planeada']>1600000000)&(df['Ordem de produção / planeada']<1700000000)]
     df['Data-base do fim'] = pd.to_datetime(df['Data-base do fim'], format='%d/%m/%Y',
@@ -1418,9 +1586,12 @@ def ler_tintas_alocadas():
     n_weeks=last_week.isocalendar()[1]-semana_inicio_plano
 
     df['semana'] = df['Data-base do fim'].apply(lambda x: x.isocalendar()[1]-semana_inicio_plano if x.isocalendar()[0]==datetime.datetime.today().year else n_weeks+x.isocalendar()[1] )
-    df=df[df['semana']>=0]
+    try:
+        df=df[df['semana']>=0]
+    except:
+        x=0
 
-    df_total = pd.read_csv('data/24. tintas.csv', sep=",", encoding="ISO-8859-1")
+    df_total = pd.read_csv('data/24. tintas.csv', sep=",", encoding="ISO-8859-1",error_bad_lines=False)
     df_verde = df_total[df_total['Revestimento'] == "Tinta verde"]
     df_azul = df_total[df_total['Revestimento'] == "Tinta azul"]
 
@@ -1810,9 +1981,11 @@ def print_output(method):
     df = pd.DataFrame(rows)
     df_cts=pd.DataFrame(carga_planeada)
 
-    df_cts=df_cts.groupby(by=['centro de trabalho','acabamento','semana']).sum()
-    df_cts=df_cts.reset_index()
-
+    try:
+        df_cts=df_cts.groupby(by=['centro de trabalho','acabamento','semana']).sum()
+        df_cts=df_cts.reset_index()
+    except:
+        print('Não foram planeadas OVs')
 
     if method==0:
         df.to_csv('data/09. output.csv')
@@ -2293,7 +2466,11 @@ def print_data_entrega(id_ovs):
 
             ovs_output.append(new_ov)
 
-    new_kpi={'kpi': wip_100/count_ovs}
+    try:
+        temp= wip_100/count_ovs
+    except:
+        temp=0
+    new_kpi={'kpi':temp}
     kpis.append(new_kpi)
     df_wip=pd.DataFrame(kpis)
     df_wip.to_csv('data/105. kpi wip.csv')
@@ -2484,7 +2661,7 @@ def gerar_output_sap(id_ovs):
 
     global semana_inicio_plano
 
-    df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='iso-8859-1')
+    df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
     planeadores = df_ofs['Nome planejador'].dropna()
     planeadores = planeadores.unique()
     planeadores = planeadores.tolist()
@@ -2505,7 +2682,7 @@ def gerar_output_sap_2(id_ovs):
 
     global semana_inicio_plano
 
-    df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='iso-8859-1')
+    df_ofs = pd.read_csv('data/08.  ofs.csv', sep=",", encoding='iso-8859-1',error_bad_lines=False)
     planeadores = df_ofs['Nome planejador'].dropna()
     planeadores = planeadores.unique()
     planeadores = planeadores.tolist()
@@ -2609,7 +2786,7 @@ def atualizar_capacidade_ref_c(method):
 
     global semana_inicio_plano
 
-    df_ocupacao=pd.read_csv('data/16. ocupacao ref c.csv')
+    df_ocupacao=pd.read_csv('data/16. ocupacao ref c.csv',error_bad_lines=False)
 
     centro_trabalho=df_ocupacao['Centro trabalho'].tolist()
 
@@ -2649,7 +2826,7 @@ def importar_capacidade_cilindros():
     capacidade_calandrados=[]
     capacidade_plyups=[]
 
-    df_bom=pd.read_csv('data/19. BOM.csv',encoding='iso-8859-1')
+    df_bom=pd.read_csv('data/19. BOM.csv',encoding='iso-8859-1',error_bad_lines=False)
     df_bom['Componente'] = pd.to_numeric(df_bom['Componente'], errors='coerce')
     df_bom['Material'] = pd.to_numeric(df_bom['Material'], errors='coerce')
     lista_material_of_calandrado=df_bom[df_bom['Componente'].isin(lista_calandrados)]
@@ -2720,12 +2897,12 @@ def criar_capacidade_rolante():
 def cumprimento_plano(ovs_dict,correr_cumprimento):
 
 
-    df_cumprimento_plano=pd.read_csv('data/99. cumprimento.csv')
+    df_cumprimento_plano=pd.read_csv('data/99. cumprimento.csv',error_bad_lines=False)
     ovs=df_cumprimento_plano['ov'].tolist()
     semana_algoritmo=df_cumprimento_plano['semana_algoritmo'].tolist()
     semana_planeada=df_cumprimento_plano['semana_plan_real'].tolist()
 
-    df_ofs=pd.read_csv('data/08.  ofs.csv',sep=",",encoding='ISO-8859-1')
+    df_ofs=pd.read_csv('data/08.  ofs.csv',sep=",",encoding='ISO-8859-1',error_bad_lines=False)
 
     df_ofs = df_ofs[df_ofs['Ordem Venda / Transferência'].notna()]
     df_ofs = df_ofs[df_ofs['Data-base do fim'].notna()]
